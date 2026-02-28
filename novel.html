@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Novel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --text: #2d3436;
+      --card: #ffffff;
+      --accent: #6c5ce7;
+    }
+
+    body.dark {
+      --bg: #1e1e1e;
+      --text: #f5f6fa;
+      --card: #2d2d2d;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    header {
+      background: var(--accent);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: var(--card);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .chapter-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .content {
+      font-size: 18px;
+      line-height: 1.9;
+      text-align: justify;
+      white-space: pre-line;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button, select {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+    }
+
+    select {
+      background: #dfe6e9;
+    }
+
+    footer {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📖 Novelku</h1>
+  <p>FRIENDS WHO I LOVE AND
+CONSIDER FAMILY
+</p>
+</header>
+
+<div class="container">
+  <div class="chapter-title" id="chapterTitle"></div>
+  <div class="content" id="chapterContent"></div>
+
+  <div class="controls">
+    <button onclick="prevChapter()">⬅ Bab Sebelumnya</button>
+
+    <select onchange="goChapter(this.value)">
+      <option value="0">Bab 1</option>
+      <option value="1">Bab 2</option>
+      <option value="2">Bab 3</option>
+      <option value="3">Bab 4</option>
+      <option value="4">Bab 5</option>
+      <option value="5">Bab 6</option>
+      <option value="6">Bab 7</option>
+      <option value="7">Bab 8</option>
+      <option value="8">Bab 9</option>
+      <option value="9">Bab 10</option>
+      <option value="10">Bab 11</option>
+      <option value="11">Bab 12</option>
+      <option value="12">Bab 13</option>
+      <option value="13">Bab 14</option>
+      <option value="14">Bab 15</option>
+      <option value="15">Bab 16</option>
+      <option value="16">Bab 17</option>
+      <option value="17">Bab 18</option>
+      <option value="18">Bab 19</option>
+      <option value="19">Bab 20</option>
+      <option value="20">Bab 21</option>
+      <option value="21">Bab 22</option>
+      <option value="22">Bab 23</option>
+      <option value="23">Bab 24</option>
+      <option value="24">Bab 25</option>
+      <option value="25">Bab 26</option>
+      <option value="26">Bab 27</option>
+      <option value="27">Bab 28</option>
+      <option value="28">Bab 29</option>
+      
+    </select>
+
+    <button onclick="nextChapter()">Bab Berikutnya ➡</button>
+    <button onclick="toggleDark()">🌙 Mode</button>
+  </div>
+</div>
+
+<footer>
+  © 2026 | Web Novel | dibuat oleh MICKONEKO/NEKOTAMA
+</footer>
+
+<script>
+  const chapters = [
+    {
+      title: "BAB 1: Ksatria dari London",
+      content: `Hujan deras mengguyur kota London malam itu. Tetesan air hujan memukul kaca jendela apartemen sederhana di lantai lima sebuah gedung tua, menciptakan melodi ritmis yang menemari kesunyian malam. Di dalam kamarnya yang hanya diterangi cahaya biru dari monitor komputer, Arthur Pendragon duduk mengetik dengan cepat. Tangannya lincah menari di atas keyboard, matanya tajam memandang layar yang menampilkan karakter avatar-nya—seorang ksatria berbaju zirah perak bernama CamelotKnight.
+
+Arthur bukan anak yang populer di sekolahnya. Ia pemalu, kutu buku, dan lebih suka menghabiskan waktu di dunia Role-Playing Game (RPG) favoritnya, Realm of Avalon. Di dunia itu, dia adalah komandan guild terkuat, seseorang yang ditakuti dan dihormati. Berbeda dengan dunia nyata di mana namanya sering dijadikan lelucon karena kesamaannya dengan Raja Arthur legendaris, sementara dia hanyalah anak laki-laki berkacamata dengan postur tubuh kurus.
+
+"Arthur! Makan malam sudah siap!" teriakan ibunya dari dapur.
+
+"Sebentar, Ma! Lagi raid boss!" sahut Arthur tanpa melepas pandangannya dari layar.
+
+Malam itu, guild-nya sedang mencoba mengalahkan bos level 100 yang sangat sulit, The Shadow Dragon. Satu per satu rekan setimnya gugur. Layar chat dipenuhi pesan kepanikan.
+
+Player88: Gue mati!
+DarkSlayer: Healernya mana?! Kenapa ga ada yang heal?
+DragonSlayer99: Kita butuh bantuan!
+
+Arthur mendecakkan lidah. Guild-nya kekurangan healer (penyembuh) yang andal. Saat itu, satu-satunya anggota yang tersisa hidup adalah dirinya dan seorang pemain baru dengan username ScarletFlame.
+
+Arthur mengira ScarletFlame adalah pemain noob (pemula) yang akan mati konyol. Tapi yang terjadi selanjutnya membuat matanya melebar.
+
+Dari layar, karakter ScarletFlame—seorang penyihir wanita berjubah merah muda—bergerak lincah. Bukan menyerang, dia justru mengeluarkan mantra-mantra penyembuhan yang sangat cepat dan presisi ke arah Arthur.
+
+ScarletFlame: Fokus bosnya, Knight! Aku jaga HP-mu!
+
+Arthur terkejut. Suara itu bukan suara bot, itu suara pemain asli yang tenang namun tegas. Dengan dukungan healer yang tak terduga andal itu, Arthur melancarkan serangan terakhirnya. Pedang virtualnya menebas leher naga, dan makhluk raksasa itu jatuh.
+
+VICTORY!
+
+Chat room meledak.
+
+DarkSlayer: WOW! Siapa itu?
+Player88: Healernya dewa!
+DragonSlayer99: Guild mana? Level berapa?
+
+Arthur membuka jendela pesan pribadi dan mengetik dengan ragu.
+
+CamelotKnight: Kamu... hebat. Terima kasih tadi.
+
+Balasannya datang cepat.
+
+ScarletFlame: Sama-sama. Kamu juga tidak kalah keren, Sir Knight. Taktikmu bagus, meski sedikit ceroboh di menit ke-5.
+
+Arthur tersenyum tipis. Ini pertama kalinya dia mendapat pujian tulus dari orang lain.
+
+CamelotKnight: Oh, maaf. Aku Arthur. Arthur Pendragon.
+ScarletFlame: Nama aslimu? Jarang orang kasih nama asli.
+CamelotKnight: Namaku terlalu unik untuk disembunyikan, mungkin. Bagaimana denganmu?
+
+Jeda beberapa detik sebelum jawaban itu muncul.
+
+ScarletFlame: Namaku Scarlett. Scarlett Claire Rose.
+
+Arthur mengulang nama itu dalam hati. Scarlett Claire Rose. Namanya terdengar begitu elegan, bagaikan bunga mawar yang indah namun berduri.
+
+Di luar jendela, petir menyambar, menerangi kamar Arthur sejenak. Saat itu, Arthur tidak tahu bahwa malam itu akan mengubah seluruh hidupnya selamanya.
+
+
+Arka berdiri di halte bus dengan tangan gemetar.
+Hari itu adalah awal dari segalanya.`
+    },
+    {
+      title: "Bab 2: Guild of Legends",
+      content: `Seminggu setelah pertemuan virtual itu, Arthur mendapati dirinya diundang ke sebuah guild eksklusif bernama "Knights of the Round Table". Guild ini hanya memiliki 12 anggota, dan masing-masing adalah pemain terpilih dengan skill luar biasa.
+
+"Aku dengar kamu mengalahkan Shadow Dragon dengan hanya satu healer," ujar suara berat dari salah satu anggota guild yang menggunakan avatar ksatria berzirah hitam. Username-nya: LionHeart_Liam.
+
+"Iya, berkat ScarletFlame," jawab Arthur di voice chat.
+
+"Heh, jangan merendah. Strategimu yang membuatku tertarik mengundangmu," sahut suara lain yang lebih tenang dan bijak. Avatar-nya adalah seorang raja dengan mahkota emas. Username: KingCedric.
+
+Arthur merasa tersanjung. Guild ini adalah legenda di Realm of Avalon. Para anggotanya dikenal sebagai pemain terbaik di masing-masing kelas.
+
+"Selamat datang, CamelotKnight," sambut suara ramah dari avatar pemanah berpakaian hijau. ArcherLeo. "Kita senang punya strategis baru."
+
+"Dengan kamu bergabung, formasi kita lengkap," tambah suara lembut dari avatar penyihir pria dengan jubah biru. PeaceMaker_Sebastian. "Aku adalah pembawa damai dalam tim. Kalau ada konflik, aku yang urus."
+
+Arthur tersenyum. "Terima kasih semua. Kapan misi pertama kita?"
+
+"Sabar, anak muda," suara bijak lainnya terdengar. Avatar ini adalah seorang tua dengan tongkat sihir. WiseAlfred. "Sebelum misi, kita harus saling mengenal. Guild ini bukan sekadar tim bermain game. Kita adalah saudara."
+
+Malam itu, Arthur diperkenalkan kepada seluruh anggota guild:
+
+Lima ksatria pria:
+
+LionHeart_Liam (Liam Keane Rubert) - Tanker bertipe pelindung yang berani dan kuat
+WiseAlfred (Alfred Davidson) - Pemimpin guild yang bijaksana
+KingCedric (Cedric Diovanni) - Raja strategi yang cerdas
+PeaceMaker_Sebastian (Axel Theodore Sebastian) - Pembawa damai dan mediator
+ArcherLeo (Archie Harrison Leo) - Pemanah pemberani dengan akurasi sempurna
+Dan lima penyihir wanita:
+
+ElegantGrace (Olivia Grace) - Penyihir angin dengan keanggunan klasik
+StrongCharlotte (Emma Charlotte) - Penyihir api yang kuat dan feminin
+StarDust_Lynn (Nova Skye Lynn) - Penyihir bintang dengan kelembutan langit malam
+AngelMila (Mila Evangeline Grace) - Penyihir cahaya pembawa kabar baik
+WiseSophia (Sophia Avery Quinn) - Pemimpin wanita yang cerdas dan logis
+"Dan tentu saja, kita punya ScarletFlame," ujar Alfred. "Dia adalah healer utama kita. Dialah yang merekomendasikanmu ke guild."
+
+Arthur terkejut. Dia melihat chat Scarlett.
+
+ScarletFlame: Selamat bergabung, Sir Knight. Aku tahu kamu adalah pilihan yang tepat.
+
+CamelotKnight: Kamu yang rekomendasikan aku? Kenapa?
+
+ScarletFlame: Karena di matamu, aku melihat semangat ksatria sejati. Bukan sekadar pemain, tapi seorang pelindung.
+
+Arthur merasa pipinya menghangat. Malam itu, dia tidak hanya mendapatkan guild baru. Dia menemukan keluarga baru.
+
+`
+    },
+    {
+      title: "Bab 3: : Lebih dari Sekadar Game",
+      content: `Minggu-minggu berikutnya, Arthur dan Scarlett menjadi pasangan yang tidak terpisahkan di Realm of Avalon. Mereka saling melengkapi; Arthur yang ahli strategi dan bertarung, dan Scarlett yang cerdas dalam sihir pendukung dan penyembuhan.
+
+Mereka mulai mengobrol melalui fitur voice chat di dalam game. Suara Scarlett terdengar lembut, sedikit serak, namun menyenangkan. Mereka tidak hanya membahas game. Mereka membahas pelajaran sekolah, film, hingga masalah pribadi.
+
+"Jadi, kamu di-bully di sekolah karena namamu?" tanya Scarlett suatu malam saat mereka sedang memancing ikan virtual di tepi danau dalam game.
+
+Arthur menghela napas, menekan tombol push-to-talk. "Iya. Mereka bilang aku sok pahlawan. Katanya Arthur Pendragon harusnya tampan dan kuat, bukan anak kutu buku berkacamata."
+
+"Aku pikir Arthur Pendragon itu bijaksana," sahut Scarlett. "Dan menurutku, kamu sudah lebih dari cukup kuat. Kamu melindungi tim kita tadi."
+
+Arthur merasa pipinya sedikit menghangat. "Bagaimana denganmu, Scar? Kamu jarang cerita soal sekolah."
+
+Di ujung sana, terdengar suara gesekan kursi dan hembusan napas berat. "Aku... aku lumayan sibuk. Orang tuaku agak ketat soal nilai. Mereka ingin aku jadi dokter atau pengacara, sementara aku cuma mau menulis dan main game."
+
+"Kamu suka menulis?"
+
+"Iya. Aku suka cerita fantasi. Seperti dunia ini," jawab Scarlett antusias. "Suatu hari nanti, aku ingin menulis novel tentang ksatria yang kesepian dan penyihir cantik yang menyelamatkannya."
+
+Arthur tertawa. "Penyihirnya cantik? Harus dong, avatar-mu bagus sekali."
+
+"Hei! Aku serius!" Scarlett terkekeh.
+
+Malam itu, Arthur menyadari sesuatu. Dia tidak lagi bermain game sekadar untuk melarikan diri. Dia bermain untuk bertemu Scarlett. Gadis itu adalah sahabat terbaik yang pernah ia miliki, meski ia belum pernah bertemu dengannya secara langsung.
+
+Di saat yang sama, di sebuah rumah mewah di Manchester, Scarlett Claire Rose duduk di kamarnya yang penuh buku. Matanya menatap layar komputer dengan senyum lembut. Untuk pertama kalinya dalam hidupnya, dia merasa tidak sendiri.
+
+"Arthur..." bisiknya. "Kau mungkin tidak tahu, tapi kau sudah menyelamatkanku dari kesunyian."
+`
+    },
+    {
+      title: "Bab 4: Pertemuan Para Legenda",
+      content: `Sebulan kemudian, guild Knights of the Round Table mengadakan pertemuan virtual besar. Semua 12 anggota hadir di dalam game, berkumpul di aula megah kastil Camelot.
+
+"Sahabat-sahabatku," ujar Alfred dengan suara penuh wibawa. "Hari ini, kita menghadapi misi terbesar dalam sejarah guild kita. The Dark Lord Morgarath telah bangkit di Dungeon of Shadows."
+
+"Dia level 150," tambah Sophia dengan nada serius. "Kita butuh strategi matang."
+
+Selama tiga jam, kedua belas anggota guild mendiskusikan rencana serangan. Arthur terpesona melihat bagaimana masing-masing anggota memberikan kontribusi unik mereka.
+
+Liam mengusulkan formasi defensif. "Aku akan jadi tank utama. HP-ku tertinggi di guild."
+
+Charlotte menambahkan, "Aku akan mengalihkan perhatian musuh dengan sihir api. Memberi waktu untuk Liam mengatur posisi."
+
+Olivia mengangguk. "Aku akan memberikan buff kecepatan pada tim."
+
+Lynn tersenyum. "Dan aku akan memanggil bintang-bintang untuk menerangi jalanan gelap dungeon."
+
+Mila menatap semua dengan lembut. "Jangan lupa, kesehatan mental kita juga penting. Kalau ada yang lelah, istirahat dulu."
+
+Sebastian menenangkan suasana. "Kita akan baik-baik saja. Percaya pada tim."
+
+Leo memanaskan panahnya. "Aku siap menembak jatuh siapa pun yang menghalangi."
+
+Cedric menatap semua dengan tatapan raja. "Kita adalah kesatuan. Kemenangan atau kekalahan, kita hadapi bersama."
+
+Arthur memandangi semua anggotanya dengan kagum. Dia tidak pernah memiliki teman sebanyak ini di dunia nyata. Di sekolah, dia adalah anak yang kesepian. Tapi di sini, dia adalah bagian dari sesuatu yang lebih besar.
+
+"Arthur," panggil Scarlett. "Kamu baik-baik saja?"
+
+Arthur tersadar. "Iya, maaf. Aku hanya... bersyukur."
+
+"Hebat. Karena posisimu sangat penting dalam misi ini," ujar Scarlett. "Kamu adalah komandan lapangan. Semua keputusan ada di tanganmu."
+
+Arthur menelan ludah. Tanggung jawab ini besar. Tapi dia tidak akan mengecewakan teman-temannya.
+
+"Baik. Kita mulai besok jam 8 malam. Persiapkan diri kalian semua."
+`
+    },
+    {
+      title: "Bab 5: Pertempuran di Dungeon of Shadows",
+      content: `Malam itu, seluruh guild berkumpul di pintu masuk Dungeon of Shadows. Suasana tegang namun penuh semangat.
+
+"Ingat formasi!" perintah Arthur. "Liam di depan, penyihir di belakang, healer di tengah!"
+
+Pintu dungeon terbuka dengan suara gemuruh. Kegelapan menyambut mereka. Satu per satu monster muncul, tapi tim bergerak dengan koordinasi sempurna.
+
+"Hati-hati! Trap di sebelah kiri!" teriak Leo sambil menembak panah ke arah jebakan tersembunyi.
+
+"Terima kasih, Leo!" ujar Liam sambil menahan serangan skeleton warrior.
+
+Mereka melaju melewati ruangan demi ruangan. Setiap tantangan diatasi dengan kerja sama yang indah. Arthur merasa seperti sedang memimpin pasukan nyata, bukan sekadar karakter virtual.
+
+Saat mereka mencapai ruang utama, The Dark Lord Morgarath menanti. Makhluk raksasa dengan sayap kelelawar dan armor hitam pekat.
+
+"Mortal foolish!" raung Morgarath dengan suara menggelegar. "Kalian berani menantangku?!"
+
+"Kita bukan mortal biasa," sahut Arthur. "Kita adalah Knights of the Round Table!"
+
+Pertempuran dimulai. Liam menahan serangan dengan perisainya. Charlotte dan Olivia melepaskan sihir gabungan mereka. Leo menembakkan panah berapi. Sebastian memberikan buff damai pada tim. Mila menyembuhkan yang terluka. Lynn menerangi medan perang. Sophia mengkoordinasikan strategi. Cedric memberikan komando cadangan. Alfred memastikan semua berjalan sesuai rencana.
+
+Dan Arthur? Arthur adalah jantung dari operasi ini. Setiap serangan, setiap mundur, setiap healing—semua dikendalikannya dengan presisi.
+
+"Tinggal 10% HP!" teriak Scarlett. "Kita hampir menang!"
+
+Tapi saat itu, Morgarath melepaskan serangan terakhirnya—sebuah gelombang kegelapan yang mengarah langsung ke Scarlett.
+
+"SCARLETT!" teriak Arthur.
+
+Tanpa pikir panjang, Arthur memindahkan karakternya ke depan Scarlett, menerima serangan itu sendiri. HP-nya langsung turun drastis.
+
+"Arthur! Kenapa kamu lakukan itu?!" suara Scarlett panik.
+
+"Karena... ksatria melindungi penyihirnya," jawab Arthur lemah. "Aku tidak akan membiarkanmu mati."
+
+Dengan sisa HP-nya yang tipis, Arthur melancarkan serangan terakhir. Pedangnya menyala dengan cahaya emas—skill legendaris yang hanya bisa diaktifkan saat HP di bawah 5%.
+
+"EXCALIBUR STRIKE!"
+
+Morgarath jatuh dengan raungan terakhir.
+
+VICTORY!
+
+Seluruh guild bersorak. Tapi Arthur tidak mendengarnya. Matanya tertuju pada satu hal: Scarlett selamat.
+
+"Arthur..." suara Scarlett bergetar. "Idiot! Jangan pernah lakukan itu lagi! Aku... aku takut kehilanganmu."
+
+Arthur tersenyum lelah. "Maaf, Scar. Tapi selama kau selamat, itu yang penting."
+
+Di layar, karakter ScarletFlame mendekati CamelotKnight dan melakukan emote pelukan virtual.
+
+Guild chat meledak dengan pesan romantis dan tepuk tangan virtual. Arthur dan Scarlett hanya bisa tertawa malu.
+`
+    },
+    {
+      title: "Bab 6: : Rahasia Scarlett",
+      content: `Minggu setelah kemenangan besar itu, Arthur mendapati Scarlett tidak online selama tiga hari. Guild-nya mulai khawatir.
+
+"Ada apa dengan ScarletFlame?" tanya Mila di group chat.
+
+"Tidak tahu. Dia tidak biasanya offline lama," jawab Olivia.
+
+Arthur mencoba menghubungi Scarlett lewat pesan pribadi, tapi tidak ada balasan. Hatinya mulai gelisah.
+
+Di hari keempat, Scarlett muncul.
+
+ScarletFlame is now Online.
+
+Arthur langsung meneleponnya. "Scarlett! Kamu kemana? Aku khawatir sekali!"
+
+Suara Scarlett terdengar berbeda. Lelah dan bergetar. "Maaf, Arthur. Aku... ada masalah di rumah. Ayahku menemukan nilaiku turun drastis karena aku terlalu sering main game. Dia melarangku menyentuh komputer."
+
+Jantung Arthur berdegup kencang. "Apa? Lalu kenapa kamu bisa online sekarang?"
+
+"Aku menyelinap ke kafe internet," jawab Scarlett pelan. "Aku cuma mau bilang kalau mungkin ini pertemuan terakhir kita. Aku tidak bisa main game lagi sampai semester ini selesai, dan itu masih enam bulan lagi."
+
+"Enam bulan?" Arthur merasa dunianya runtuh. "Tidak, Scar. Kita bisa tetap kontak. Bukan game-nya yang penting, tapi persahabatan kita."
+
+"Ayahku menyita HP-ku juga, Arthur," sahutnya sedih. "Aku tidak punya cara untuk menghubungimu."
+
+Arthur menggigit bibirnya. Dia tidak ingin kehilangan satu-satunya orang yang memahaminya. Dia menatap layar monitor, kemudian melirik peta dunia yang menempel di dinding kamarnya. Dia tahu Scarlett tinggal di kota yang sama dengannya, Manchester, berdasarkan kode area telepon yang pernah Scarlett sebutkan sekali.
+
+"Scarlett, dengarkan aku," kata Arthur tegas. "Kamu ingat taman kota di dekat Perpustakaan Pusat Manchester?"
+
+"Iya, kenapa?"
+
+"Besok sore, jam 3. Di sana ada patung seekor singa. Aku akan menunggu di sana," ucap Arthur dengan determinasi. "Aku tidak mau kita hanya menjadi teman maya selamanya. Aku ingin bertemu denganmu, Scarlett Claire Rose."
+
+Suara Scarlett terdiam sejenak. "Arthur... tapi..."
+
+"Tidak ada tapi. Kalau kamu benar-benar menganggapku sahabat, datanglah. Aku akan memakai jaket biru dan membawa buku legenda King Arthur. Jadi kamu bisa mengenalku."
+
+Ada hening yang panjang sebelum akhirnya Scarlett menjawab pelan. "Baiklah. Besok. Di patung singa."
+
+`
+    },
+    {
+      title: "Bab 7: Pertemuan di Balik Hujan",
+      content: `BAB 7: Pertemuan di Balik Hujan
+Sore harinya, langit mendung. Arthur berdiri di samping patung singa di taman kota, memegang erat buku tebalnya. Dia sangat gugup. Apakah Scarlett akan kecewa melihat penampilannya yang biasa-biasa saja? Apakah Scarlett akan datang?
+
+Hujan mulai turun gerimis. Arthur menarik tudung jaket birunya. Dia menunggu selama satu jam. Pengunjung taman mulai bubar, mencari tempat berteduh. Hatinya mulai ciut. Mungkin Scarlett tidak bisa menyelinap keluar. Mungkin semua ini hanya angan-angan.
+
+Tepat saat Arthur hendak berbalik pergi, dia mendengar suara langkah kaki berlari mendekat dari arah perpustakaan.
+
+Seorang gadis berambut pirang, mengenakan seragam sekolah dan jas hujan transparan, berlari menuju patung singa. Dia membawa tas ransel yang dihiasi banyak gantungan kunci berbentuk bunga mawar—avatar Scarlett adalah mawar.
+
+Gadis itu terengah-engah, mencari-cari. Matanya menatap Arthur yang tegang berdiri di bawah pohon.
+
+"Arthur?" tanyanya dengan suara yang tak asing di telinga Arthur.
+
+Arthur menelan ludah. "Scarlett?"
+
+Wajah gadis itu berubah cerah. Dia tersenyum lebar, menunjukkan deretan gigi putihnya. Dia terlihat jauh lebih cantik dari avatar virtualnya, tapi ada satu kesamaan: matanya yang tajam namun lembut.
+
+"Kau benar-benar nyata," bisik Scarlett, mendekati Arthur. "Dan kau... kau benar-benar membawa buku itu."
+
+Arthur menatap gadis di hadapannya. "Dan kamu benar-benar Scarlett Claire Rose."
+
+Hujan mulai turun lebih deras, menciptakan tirai pemisah antara mereka dan dunia luar. Scarlett tertawa, suaranya jernih mengalahkan gemuruh hujan.
+
+"Maaf aku telat. Penjaga perpustakaan agak lama membereskan buku-buku," kata Scarlett sambil mengibaskan rambut basahnya. "Jadi, ini dia wajah di balik CamelotKnight? Tidak seburuk yang kamu gambarkan, lho. Kamu terlihat... keren."
+
+Arthur tersenyum, untuk pertama kalinya dalam hidupnya, dia merasa percaya diri bukan karena armor digital, tapi karena penerimaan dari temannya.
+
+"Dan ini dia Sang Penyihir," balas Arthur. "Lebih cantik dari versi online-nya."
+
+Scarlett tersipu. "Hei, jangan mulai sekarang. Kita masih memiliki misi besar, Arthur."
+
+"Misi apa?"
+
+"Misi menyelamatkan nilaiku agar aku bisa main game lagi," goda Scarlett sambil mengedipkan mata. "Dan tentu saja, misi menemukan makanan hangat. Aku lapar."
+
+Arthur tertawa. Dia menawarkan tangannya, bukan untuk menekan tombol keyboard, tapi untuk mengajak sahabatnya berjalan.
+
+"Aku tahu tempat. Warung kopi di ujung jalan memiliki koneksi Wi-Fi bagus."
+
+Scarlett menggenggam tangan Arthur. "Mari kita mulai petualangan baru, Sir Arthur."
+
+Di bawah guyuran hujan kota Manchester, dua sahabat yang bertemu di dunia maya akhirnya melangkah bersama ke dunia nyata.
+
+`
+    },
+    {
+      title: "Bab 8: : Persiapan Pertemuan Besar",
+      content: `Seminggu setelah pertemuan Arthur dan Scarlett, guild Knights of the Round Table mengumumkan acara besar: pertemuan offline pertama di London.
+
+"Semua anggota harus hadir," ujar Alfred di voice chat. "Ini saatnya kita bertemu di dunia nyata."
+
+Arthur dan Scarlett saling berpandangan melalui layar video call. Mereka sama-sama gugup namun bersemangat.
+
+"Kamu yakin bisa datang?" tanya Arthur.
+
+"Aku sudah bicara dengan orang tuaku," jawab Scarlett dengan senyum. "Mereka setuju asal aku janji belajar lebih giat. Dan... mereka ingin bertemu denganmu juga."
+
+Arthur menelan ludah. "O-oke. Tentu."
+
+Pertemuan dijadwalkan dua minggu lagi. Selama waktu itu, semua anggota guild saling berkoordinasi. Mereka akan bertemu di sebuah kafe di pusat London, tepat di seberang Big Ben.
+
+"Aku tidak sabar bertemu kalian semua!" ujar Lynn dengan antusias.
+
+"Aku akan membawa kue buatan sendiri," tambah Mila.
+
+"Aku akan membawa buku strategi untuk dibahas," sahut Sophia.
+
+Leo tertawa. "Kalian terlalu serius. Yang penting kita bisa main game bareng secara offline!"
+
+Arthur merasa hangat. Ini adalah pertama kalinya dia akan bertemu dengan begitu banyak teman sekaligus. Di dunia nyata, dia tidak pernah memiliki teman sebanyak ini.
+
+`
+    },
+    {
+      title: "Bab 9: The Gathering of Legends",
+      content: `Hari yang dinantikan tiba. Arthur dan Scarlett tiba di kafe tepat waktu. Mereka memilih meja besar di tengah ruangan.
+
+Satu per satu anggota guild mulai berdatangan. Arthur tidak bisa menyembunyikan kekagumannya. Setiap orang yang datang terlihat persis seperti yang dia bayangkan.
+
+Pertama, Liam Keane Rubert. Pria bertubuh tinggi dan besar dengan rambut coklat pendek. Matanya tajam namun ramah. Dia mengenakan jaket kulit hitam yang membuatnya terlihat seperti biker.
+
+"Arthur!" Liam menyapa dengan pelukan erat. "Akhirnya kita bertemu! Kau lebih kurus dari yang aku bayangkan, tapi matamu tajam seperti pedang!"
+
+Kemudian, Alfred Davidson. Pria lebih tua dengan rambut beruban dan kacamata bulat. Dia terlihat seperti profesor yang bijaksana.
+
+"Selamat datang, anak muda," ujar Alfred dengan senyum hangat. "Aku sudah menunggu momen ini."
+
+Cedric Diovanni mengikuti. Pria dengan postur tegap dan rambut hitam rapi. Dia mengenakan setelan jas yang elegan.
+
+"Arthur, Scarlett. Senang bertemu kalian." Dia mengangguk dengan sopan.
+
+Axel Theodore Sebastian muncul dengan senyum lembut. Dia mengenakan kemeja putih santai dan celana jeans.
+
+"Tenang, tidak perlu gugup," katanya sambil menepuk bahu Arthur. "Kita semua saudara di sini."
+
+Terakhir, Archie Harrison Leo datang berlari. Pria muda dengan rambut pirang kusut dan senyum ceria.
+
+"Maaf telat! Aku nyasar di stasiun!" teriaknya sambil terengah-engah.
+
+Kemudian giliran para wanita. Olivia Grace datang dengan gaun klasik yang elegan. Emma Charlotte mengenakan rok pendek dan atasan stylish. Nova Skye Lynn tampil dengan rok biru lembut dan rambut dikepang. Mila Evangeline Grace mengenakan gaun putih sederhana dengan hiasan bunga. Dan Sophia Avery Quinn datang dengan setelan blazer hitam yang profesional.
+
+"Semua sudah hadir," ujar Alfred dengan puas. "Mari kita mulai pertemuan pertama Knights of the Round Table di dunia nyata."
+
+Mereka mengangkat gelas minuman mereka bersamaan.
+
+"To friendship!" seru semua.
+
+Arthur memandangi wajah-wajah di sekelilingnya. Untuk pertama kalinya dalam hidupnya, dia merasa benar-benar diterima. Bukan karena avatar atau karakter virtual, tapi karena dirinya sendiri.
+
+`
+    },
+    {
+      title: "Bab 10: Rahasia Tersembunyi",
+      content: `Pertemuan berlangsung meriah. Mereka bercerita tentang kehidupan masing-masing di dunia nyata. Arthur terkejut mengetahui bahwa Liam adalah atlet rugby, Alfred adalah pengacara sukses, dan Cedric adalah putra dari seorang bangsawan kecil.
+
+"Tunggu, kalian bukan anak sekolahan seperti kami?" tanya Arthur kaget.
+
+Charlotte tertawa. "Tidak semua dari kami. Aku sendiri adalah mahasiswa kedokteran. Lynn adalah penari ballet. Mila adalah relawan LSM."
+
+"Dan aku adalah analis keuangan," tambah Sophia dengan bangga.
+
+Arthur merasa sedikit tidak percaya diri. Dia hanyalah anak SMA biasa dengan nilai rata-rata. Tapi Scarlett memegang tangannya di bawah meja.
+
+"Hei, tidak perlu minder," bisik Scarlett. "Kamu adalah Arthur Pendragon. Komandan guild terkuat. Itu sudah cukup."
+
+Arthur tersenyum. Scarlett selalu tahu cara menenangkannya.
+
+"Tapi sebenarnya," ujar Sebastian tiba-tiba, "ada alasan lain kami mengadakan pertemuan ini."
+
+Semua menjadi serius. Alfred mengangguk.
+
+"Ada ancaman baru di Realm of Avalon," jelas Alfred. "Bukan hanya di dalam game, tapi juga di luar."
+
+"Apa maksudmu?" tanya Leo dengan bingung.
+
+Cedric menghela napas. "Server game kita telah diserang oleh peretas. Data semua pemain berisiko dicuri. Dan yang lebih mengkhawatirkan... peretas itu sepertinya mengetahui identitas asli kita."
+
+"Bagaimana bisa?" tanya Olivia dengan nada cemas.
+
+Mila mengangguk. "Aku juga mendapat pesan anongmous beberapa hari lalu. Pesan itu menyebut namaku dengan lengkap."
+
+Suasana menjadi tegang. Arthur merasa bulu kuduknya berdiri. Siapa yang berani mengancam teman-temannya?
+
+"Kita harus menghadapi ini bersama," ujar Arthur dengan tegas. "Sebagai guild. Sebagai sahabat."
+
+Semua anggota mengangguk setuju.
+`
+    },
+    {
+      title: "Bab 11: Investigasi Dimulai",
+      content: `Setelah pertemuan, Arthur dan yang lainnya mulai menyelidiki ancaman misterius itu. Mereka membentuk tim khusus untuk mencari tahu siapa di balik serangan tersebut.
+
+"Sophia dan aku akan mencari tahu dari sisi teknis," ujar Alfred. "Kita akan melacak IP address peretas."
+
+"Liam dan Leo akan mengawasi aktivitas mencurigakan di dalam game," tambah Cedric. "Kalau ada yang aneh, laporkan segera."
+
+"Arthur dan Scarlett," ujar Sebastian, "kalian fokus pada hubungan sosial. Mungkin ada yang dendam dengan guild kita."
+
+Arthur mengangguk. Dia tidak menyangka petualangannya akan membawanya ke situasi seperti ini. Tapi dia tidak akan mundur.
+
+Malam itu, Arthur dan Scarlett berbicara melalui video call.
+
+"Kamu punya dugaan siapa?" tanya Scarlett.
+
+Arthur menggeleng. "Tidak. Tapi... ada satu hal yang menggangguku."
+
+"Apa?"
+
+"Kenapa peretas itu mengetahui identitas kita? Itu berarti dia adalah orang dalam. Atau minimal, pernah menjadi bagian dari guild kita."
+
+Mata Scarlett melebar. "Maksudmu... ada pengkhianat di antara kita?"
+
+Arthur menggeleng cepat. "Tidak, aku tidak bilang begitu. Tapi mungkin ada mantan anggota yang dendam."
+
+Mereka memutuskan untuk mengecek sejarah guild. Ternyata, sebelum Arthur bergabung, ada satu anggota yang dikeluarkan karena berbuat curang.
+
+DarkMist_X. Username itu tidak asing bagi Arthur. Dia adalah pemain yang pernah mencoba menyerang Scarlett saat misi dungeon bulan lalu.
+
+"aku akan cari tahu tentang orang ini," ujar Arthur dengan determinasi.
+`
+    },
+    {
+      title: "Bab 12: Pertarungan di Dunia Nyata",
+      content: `Penyelidikan membawa Arthur dan Scarlett ke sebuah kafe internet di pinggiran kota. Berdasarkan informasi dari Sophia, IP address peretas berasal dari lokasi itu.
+
+"Kalian berdua hati-hati," pesan Liam melalui earpiece. "Kami standby di luar."
+
+Arthur dan Scarlett memasuki kafe dengan hati-hati. Mereka mencari-cari orang yang mencurigakan. Tapi yang mereka temukan justru mengejutkan.
+
+Seorang pria dewasa dengan rambut pirang kusut duduk di pojok, menatap layar komputer dengan intens. Di layarnya terlihat kode-kode pemrograman yang kompleks.
+
+"Itu dia," bisik Scarlett. "Tapi... dia terlihat familiar."
+
+Arthur memandangi pria itu lebih dekat. Tiba-tiba, dia menyadari sesuatu.
+
+"Tunggu... dia itu ayahmu!"
+
+Scarlett tersentak. "APA?!"
+
+Pria itu menoleh. Matanya melebar melihat Arthur dan Scarlett.
+
+"Scarlett? Apa yang kamu lakukan di sini?"
+
+"ayah?!" Scarlett tidak percaya. "Kamu... kamu yang meretas server game kami?"
+
+Ayah Scarlett, Mr. Rose, menghela napas panjang. "Aku... aku hanya ingin melindungimu."
+
+"Melindungi? Dengan meretas server teman-temanku?!"
+
+"Tidak! Itu bukan maksudku!" Mr. Rose berdiri dengan panik. "Aku hanya ingin mengecek apakah game itu aman untukmu. Tapi saat aku mencoba masuk ke sistem... ada yang lain di sana. Peretas lain yang jauh lebih berbahaya!"
+
+Arthur mengerutkan dahi. "Jadi kamu bukan ancamannya?"
+
+"Tidak! Aku justru mencoba mencegah ancaman yang lebih besar!"
+
+Tepat saat itu, lampu di kafe berkedip-kedip. Semua komputer mati sekaligus.
+
+"Apa yang terjadi?!" teriak Scarlett.
+
+Mr. Rose mendecakkan lidah. "Dia sudah menemukan kita. Peretas aslinya. Dia tahu kita sedang menyelidiki."
+
+Arthur mengambil HP-nya dan menghubungi tim. "Liam! Kita butuh bantuan! Ada situasi darurat!"
+
+`
+    },
+    {
+      title: "Bab 13: Aliansi yang Tak Terduga",
+      content: `Dalam waktu singkat, seluruh guild berkumpul di kafe internet. Situasi semakin tegang ketika Mr. Rose menjelaskan apa yang sebenarnya terjadi.
+
+"Ada organisasi yang menargetkan game online seperti Realm of Avalon," jelas Mr. Rose. "Mereka mencuri data pribadi pemain untuk dijual di dark web. Aku menemukan jejak mereka saat sedang... ehem... mengawasi aktivitas game Scarlett."
+
+"Jadi selama ini kamu memata-matai game kami?" tanya Arthur dengan nada tidak percaya.
+
+Mr. Rose tersipu malu. "Sebagai ayah, aku khawatir. Tapi dari kekhawatiran itu, aku justru menemukan konspirasi besar."
+
+Sophia mengangguk. "Itu menjelaskan kenapa data kita berisiko. Tapi kenapa mereka menargetkan guild kita khususnya?"
+
+"Karena kalian adalah guild terkuat," jawab Mr. Rose. "Data kalian sangat berharga. Terutama data anggota seperti Cedric yang adalah bangsawan, atau Alfred yang adalah pengacara terkenal."
+
+Cedric mendecakkan lidah. "Jadi kita adalah target utama?"
+
+"Tepat sekali."
+
+Alfred berpikir sejenak. "Kalau begitu, kita butuh strategi. Kita akan lawan mereka dengan cara kita sendiri."
+
+"Caranya bagaimana?" tanya Leo bingung.
+
+Arthur tersenyum tipis. "Dengan cara gamer. Kita akan lakukan raid ke sistem mereka."
+
+`
+    },
+    {
+      title: "Bab 14: Pertarungan Digital",
+      content: `Malam itu, di apartemen Arthur yang luas (dia baru saja pindah ke apartemen yang lebih besar dengan uang tabungannya), kedua belas anggota guild berkumpul. Mereka membawa laptop masing-masing dan membentuk formasi melingkar.
+
+"Baiklah, ini misi kita," ujar Alfred dengan nada komandan. "Kita akan menyerang server peretas dan menghancurkan data curian mereka."
+
+"Tapi kita butuh cara masuk ke sistem mereka," tambah Sophia. "Firewall mereka pasti sangat kuat."
+
+Mr. Rose, yang ikut serta dalam misi ini, mengangkat tangan. "Aku bisa membantu. Aku punya backdoor yang aku temukan saat menyelidiki mereka."
+
+"Luar biasa, Pak!" ujar Liam dengan antusias. "Anda lebih keren dari yang aku kira!"
+
+Mr. Rose tersenyum tipis. "Jangan sebut ayahmu keren hanya karena ini. Dia tetap orang yang menyita laptopmu."
+
+Scarlett memeluk ayahnya. "Terima kasih, Yah. Maaf aku marah tadi."
+
+Ayahnya mengelus rambut Scarlett. "Tidak apa-apa, Sayang. Ayah juga salah tidak jujur dari awal."
+
+Arthur memandangi aksi keluarga itu dengan perasaan hangat. Dia membayangkan bagaimana rasanya memiliki hubungan seperti itu dengan orang tuanya sendiri. Kebetulan, orang tua Arthur sedang tidak ada di rumah karena urusan kerja.
+
+"Oke, kita mulai!" seru Arthur, mengalihkan perhatiannya ke layar.
+`
+    },
+    {
+      title: "Bab 15: : Raid Malam Itu",
+      content: `Operasi berlangsung intens. Setiap anggota guild memiliki peran masing-masing, sama seperti di dalam game.
+
+Liam dan Leo bertugas mengawasi sistem deteksi. Charlotte dan Olivia bertugas mengalihkan perhatian dengan serangan DDOS palsu. Lynn dan Mila bertugas memantau kesehatan mental tim. Sebastian menjadi mediator jika ada yang panik. Sophia dan Alfred memimpin serangan utama. Cedric mengkoordinasikan seluruh operasi.
+
+Dan Arthur? Arthur adalah komandan lapangan, sama seperti di game.
+
+"Liam, ada gerakan mencurigakan di sektor 3!" teriak Arthur.
+
+"Roger! Aku blokir!" jawab Liam sambil mengetik cepat.
+
+"Charlotte, sedikit lagi! Firewall mereka mulai lemah!" ujar Sophia.
+
+"Aku tahu! Tapi server kita juga kepanasan!" sahut Charlotte.
+
+Mila berdiri dan membagikan minuman untuk semua. "Istirahat sebentar, teman-teman. Jangan sampai kena stroke sebelum menang."
+
+Sebastian menenangkan Lynn yang mulai panik. "Tenang, kita akan berhasil. Percaya pada tim."
+
+Scarlett duduk di samping Arthur, menatap layarnya dengan intens.
+
+"Arthur, bagaimana kalau kita gunakan trik lag yang kemarin?"
+
+Arthur tersenyum. "Pintar! Kita bisa mengeksploitasi bug di sistem mereka!"
+
+Dengan koordinasi yang sempurna, mereka berhasil menembus firewall peretas. Data curian ditemukan dan dihapus satu per satu.
+
+"VICTORY!" teriak Leo saat sistem peretas akhirnya crash.
+
+Semua bersorak. Mereka berhasil. Tapi Arthur tahu, ini baru permulaan.
+`
+    },
+    {
+      title: "Bab 16: Bukti yang Mengguncang",
+      content: `Setelah berhasil menghancurkan server peretas, tim menemukan sesuatu yang mengejutkan. Di dalam data yang tersisa, ada daftar target berikutnya dari organisasi peretas itu.
+
+"INI GILA!" teriak Sophia dengan nada tidak percaya. "Mereka tidak hanya menargetkan game! Mereka juga menargetkan bank, rumah sakit, bahkan pemerintah!"
+
+Cedric menatap layar dengan serius. "Ini lebih besar dari yang kita kira. Organisasi ini bukan sekadar peretas biasa."
+
+Mr. Rose mengangguk. "Aku sudah curiga dari awal. Tidak mungkin satu orang bisa melakukan semua ini. Ada sindikat besar di baliknya."
+
+Alfred berdiri dengan wajah tegang. "Kita harus melaporkan ini ke pihak berwajib."
+
+"Tapi buktinya sudah kita hancurkan," ujar Olivia dengan nada cemas. "Bagaimana kita bisa membuktikan?"
+
+Arthur tersenyum tipis. "Siapa bilang kita menghancurkan semuanya?"
+
+Semua menatap Arthur dengan bingung.
+
+"Aku menyimpan backup data sebelum kita hapus," jelas Arthur. "Aku tahu suatu saat kita butuh bukti."
+
+Sophia tertawa. "Kamu licik, Arthur! Aku suka itu!"
+`
+    },
+    {
+      title: "Bab 17: Perjalanan ke Markas",
+      content: `Dengan bukti yang cukup, guild memutuskan untuk bekerja sama dengan pihak berwajib. Namun, investigasi menunjukkan bahwa sindikat peretas memiliki markas utama di luar negeri.
+
+"Menurut informasi, markas mereka ada di Zurich, Swiss," ujar Mr. Rose. "Dan yang mengejutkan, pemimpinnya adalah mantan developer game Realm of Avalon yang di-PHK karena menyalahgunakan data pemain."
+
+"Jadi dendam dia ke game itu karena dia di-PHK?" tanya Mila dengan nada tidak percaya.
+
+"Sepertinya begitu," jawab Mr. Rose.
+
+Alfred menghela napas. "Kalau begitu, kita harus ke sana."
+
+"KE ZURICH?!" teriak Leo dengan antusias. "AKU SELALU INGIN KE SWISS!"
+
+"Tapi biayanya..." Olivia tampak khawatir.
+
+Jangan khawatir," ujar Cedric dengan tenang. "Aku akan menanggung semua biaya perjalanan. Anggap ini sebagai misi guild."
+
+Arthur memandangi teman-temannya dengan perasaan kagum. Mereka siap melakukan apapun untuk melindungi sesama.
+`
+    },
+    {
+      title: "Bab 18: : Petualangan di Zurich",
+      content: `Seminggu kemudian, kedua belas anggota guild tiba di Zurich. Mereka menginap di hotel mewah yang dipesan Cedric.
+
+"Wah, suite room!" teriak Lynn dengan mata berbinar. "Ini seperti kastil!"
+
+"Mungkin di dunia nyata," ujar Arthur. "Tapi di dunia maya, kita masih dalam misi berbahaya."
+
+Malam itu, mereka berkumpul di kamar Arthur untuk merencanakan langkah selanjutnya. Mr. Rose, yang ikut serta dalam perjalanan ini, membuka peta digital.
+
+"Markas sindikat ada di gedung ini," jelasnya sambil menunjuk lokasi di peta. "Kita perlu masuk ke server room di lantai bawah tanah dan mengambil bukti tambahan."
+
+"Bagaimana caranya?" tanya Sebastian. "Tidak mungkin kita bisa masuk begitu saja."
+
+Scarlett tersenyum misterius. "Sebenarnya... ada cara."
+
+Semua menatapnya dengan penasaran.
+
+"Aku kenal seseorang yang bekerja di sana. Mantan teman main game-ku sebelum bergabung dengan guild kalian."
+
+"Kamu punya kenalan di sindikat peretas?!" tanya Liam dengan tidak percaya.
+
+"Dia bukan bagian dari sindikat. Dia hanya bekerja di perusahaan yang menyewakan gedung itu. Dan... dia tidak tahu apa yang sebenarnya terjadi di dalam."
+
+Arthur mengangguk. "Ini kesempatan kita. Scarlett, kamu bisa menghubunginya?"
+
+"Sudah aku hubungi. Dia bersedia membantu asalkan kita menjamin keselamatannya."
+`
+    },
+    {
+      title: "Bab 19: Infiltrasi",
+      content: `Infiltrasi
+Malam berikutnya, tim memulai operasi penyusupan. Karena tidak mungkin semua masuk sekaligus, mereka membagi tugas.
+
+Arthur, Scarlett, Liam, dan Sophia adalah tim infiltrasi utama. Mereka akan masuk ke gedung melalui bantuan kenalan Scarlett.
+
+Alfred, Cedric, dan Leo berada di van parkir di luar gedung, memantau melalui kamera dan memberikan instruksi.
+
+Charlotte, Olivia, Lynn, Mila, dan Sebastian berada di hotel sebagai backup dan tim medis jika terjadi sesuatu.
+
+"Tim infiltrasi, siap?" tanya Arthur melalui earpiece.
+
+"Siap!" jawab yang lain serempak.
+
+Mereka memasuki gedung melalui pintu samping yang tidak terkunci—bantuan dari kenalan Scarlett. Koridornya gelap dan sepi.
+
+"Seharusnya tidak ada penjaga di lantai ini pada jam segini," bisik Sophia. "Tapi tetap waspada."
+
+Mereka berjalan perlahan menuju tangga menuju basement. Saat itu, Arthur merasa seperti sedang bermain game stealth. Bedanya, ini adalah kenyataan. Satu kesalahan bisa berakibat fatal.
+
+"Arthur, ada kamera di depanmu," bisik Alfred melalui earpiece. "Liam, gunakan jammer yang kita bawa."
+
+Liam mengeluarkan alat kecil dari sakunya dan mengarahkannya ke kamera. Lampu kamera berkedip lalu mati.
+
+"Jalan terbuka," ujar Liam.
+
+Mereka melanjutkan perjalanan hingga mencapai pintu bertuliskan "SERVER ROOM - AUTHORIZED PERSONNEL ONLY".
+
+"Ini dia," bisik Scarlett. "Kita hampir sampai."
+
+Tapi saat Arthur hendak membuka pintu, suara alarm tiba-tiba berbunyi keras.
+
+"KITA KETEMUAN!" teriak Sophia.
+`
+    },
+    {
+      title: "Bab 20: Keterpurukan",
+      content: `Alarm membuat seluruh gedung berisi penjaga. Dalam hitungan menit, Arthur dan timnya dikepung oleh orang-orang bersenjata.
+
+"ANGKAT TANGAN!" teriak salah satu penjaga.
+
+Arthur memandangi teman-temannya dengan perasaan putus asa. Mereka gagal.
+
+Di luar gedung, Alfred dan yang lainnya panik mendengar situasi melalui earpiece.
+
+"Arthur! Arthur! Apa yang terjadi?!" teriak Cedric.
+
+Tidak ada jawaban. Earpiece Arthur sudah diambil oleh penjaga.
+
+Di dalam ruangan tahanan sementara, Arthur, Scarlett, Liam, dan Sophia duduk dengan tangan terborgol.
+
+"Maafkan aku," bisik Arthur. "Ini salahku. Aku seharusnya lebih hati-hati."
+
+Scarlett menggeleng. "Bukan salahmu, Arthur. Kita semua yang setuju dengan rencana ini."
+
+Liam mencoba tetap positif. "Tenang, Alfred dan yang lainnya pasti akan menolong kita."
+
+Sophia, yang biasanya tenang, terlihat cemas. "Tapi bagaimana? Mereka tidak tahu posisi kita sekarang."
+
+Tepat saat itu, pintu ruangan terbuka. Seorang pria dengan setelan rapi masuk dengan senyum licik.
+
+"Selamat datang, para pahlawan cilik," ujar pria itu. "Aku adalah Victor Kross, pemimpin sindikat ini. Dan kalian... adalah tamu yang sangat tidak diundang."
+
+`
+    },
+    {
+      title: "Bab 21: Penyergapan",
+      content: `BAB 21: Penyergapan
+Di luar gedung, tim cadangan panik. Mereka kehilangan kontak dengan tim infiltrasi.
+
+"Kita harus melakukan sesuatu!" teriak Leo dengan nada frustasi.
+
+"Calm down," ujar Sebastian melalui video call. "Panik tidak akan membantu."
+
+Charlotte mengusulkan, "Bagaimana kalau kita hubungi polisi lokal?"
+
+Alfred menggeleng. "Tidak. Kalau kita hubungi polisi, Victor akan tahu. Dia mungkin memiliki mata-mata di kepolisian."
+
+Cedric berdiri dengan tatapan serius. "Ada satu cara. Aku punya kenalan di Interpol. Mungkin mereka bisa membantu."
+
+Sementara itu, di dalam gedung, Victor Kross menginterogasi tim infiltrasi satu per satu.
+
+"Jadi, kalian adalah guild dari game online itu?" tanya Victor dengan nada meremehkan. "Kalian mengira kalian bisa menghentikanku dengan skill bermain game?"
+
+Arthur menatap Victor dengan tajam. "Kami tidak menyangka kami bisa. Kami TAHU kami bisa."
+
+Victor tertawa. "Berani sekali. Tapi sayang, kalian sudah kalah."
+
+"Tidak selamanya," sahut Scarlett dengan suara dingin.
+
+Victor berbalik menatap Scarlett. "Oh? Kamu punya rencana lain, Putri?"
+
+Scarlett tersenyum tipis. "Aku punya sesuatu yang tidak kamu ketahui."
+
+`
+    },
+    {
+      title: "Bab 22: Kartu As",
+      content: `Ternyata, Scarlett sudah mempersiapkan rencana cadangan sebelum misi dimulai. Diam-diam, dia memasang bug pelacak di server room saat mereka sedang diinterogasi. Bug itu sudah mengirimkan semua data ke tim cadangan di luar.
+
+"Kamu licik," bisik Arthur saat mereka kembali ke sel.
+
+Scarlett tersenyum. "Dari mana kira-kira aku belajar?"
+
+Di luar, tim cadangan menerima data yang dikirim oleh bug Scarlett.
+
+"INI KUAT!" teriak Alfred. "Data ini cukup untuk menghancurkan seluruh operasi Victor!"
+
+Cedric segera menghubungi kenalannya di Interpol. Dalam waktu singkat, tim khusus dikerahkan ke gedung.
+
+Namun, Victor mengetahui adanya penyusupan data.
+
+"PERIKSA SEMUA SERVER!" teriaknya dengan marah. "ADA YANG MENCOBA MERUSAK OPERASI KITA!"
+
+Arthur dan tim menyadari mereka harus menghambat Victor selama mungkin.
+
+"Liam, Sophia, kau dua tahu apa yang harus dilakukan," bisik Arthur.
+
+Liam dan Sophia mengangguk. Mereka mulai membuat keributan di sel mereka, menarik perhatian penjaga.
+
+Saat penjaga membuka pintu, Liam—dengan kekuatannya sebagai atlet rugby—menyerbu keluar dan melumpuhkan dua penjaga sekaligus.
+
+"NOW! SCARLETT!" teriak Arthur.
+
+Scarlett berlari menuju panel kontrol di dinding dan menekan tombol alarm kebakaran. Semua pintu otomatis terbuka.
+
+"LARI!" perintah Arthur.
+`
+    },
+    {
+      title: "Bab 23: Pertarungan Terakhir",
+      content: `Mereka berlari melewati koridor yang penuh dengan asap palsu dari alarm kebakaran. Di setiap persimpangan, ada penjaga yang menunggu. Tapi Arthur dan tim bergerak dengan koordinasi yang sempurna—sama seperti saat raid di game.
+
+"Kiri!" perintah Arthur. "Liam, block! Sophia, hack!"
+
+Liam menahan serangan penjaga sementara Sophia meretas komputer di dinding untuk mengunci pintu di belakang mereka.
+
+Mereka hampir mencapai pintu keluar ketika Victor muncul dengan pistol di tangannya.
+
+"Tidak ada yang akan pergi dari sini," ancam Victor.
+
+Arthur menghadapi Victor dengan berani. "Biarkan teman-temanku pergi. Aku yang akan tetap."
+
+"ARTHUR TIDAK!" teriak Scarlett.
+
+Arthur memandangi Scarlett dengan mata penuh kasih. "Scar, dengarkan aku. Kau harus pergi. Kau harus memastikan data itu aman."
+
+"Aku tidak akan meninggalkanmu!" Scarlett menolak.
+
+Tapi sebelum Arthur bisa berkata lagi, suara sirene polisi terdengar dari luar. Tim Interpol sudah tiba.
+
+Victor terlihat panik. Dia berbalik dan mencoba melarikan diri. Arthur mengejarnya.
+
+Mereka berlari ke atap gedung. Victor terpojok di tepi.
+
+"Tidak ada jalan keluar, Victor," ujar Arthur dengan napas terengah.
+
+Victor tertawa dingin. "Kau mengira ini sudah berakhir? Ini baru permulaan."
+
+Dia mengeluarkan remote kecil dari sakunya. "Satu tombol ini akan menghapus semua server. Termasuk game favoritmu, Realm of Avalon."
+
+Arthur terpana. "Kamu tidak akan..."
+
+"Coba saja," tantang Victor dengan senyum gila.
+
+Tapi sebelum Victor menekan tombol itu, suara panah melesat terdengar. Sebuah panah mainan—ditembakkan oleh Leo yang baru saja tiba di atap—mengenai tangan Victor dan menjatuhkan remote.
+
+"LEO?!" Arthur tidak percaya.
+
+Leo berdiri di pintu atap dengan busur mainan di tangan. "Jangan lupa, aku adalah pemanah terbaik di guild!"
+
+Dalam kekacauan itu, Arthur berhasil melumpuhkan Victor tepat saat tim Interpol tiba.
+`
+    },
+    {
+      title: "Bab 24: Pengakuan",
+      content: `Setelah penangkapan Victor, seluruh guild berkumpul di kantor polisi untuk memberikan keterangan. Mr. Rose yang sudah menunggu dengan cemas segera memeluk putrinya.
+
+"Jangan pernah melakukan hal bodoh seperti itu lagi!" ujar Mr. Rose dengan mata berkaca-kaca.
+
+Scarlett memeluk ayahnya erat. "Maaf, Yah. Tapi kami tidak punya pilihan."
+
+Interpol sangat terkesan dengan keberhasilan guild ini. Mereka bahkan menawarkan kerjasama untuk kasus-kasus serupa di masa depan.
+
+"Kalian memiliki bakat yang luar biasa," ujar salah satu agen. "Koordinasi tim kalian seperti pasukan militer profesional."
+
+Alfred tersenyum. "Itu karena kami sudah terbiasa bekerja sama di dunia game."
+
+Malam itu, di hotel, Arthur berdiri di balkon kamarnya sendirian. Scarlett mendekatinya.
+
+"Kamu baik-baik saja?" tanya Scarlett lembut.
+
+Arthur mengangguk. "Aku hanya berpikir... semua ini terasa seperti mimpi. Kalau dulu orang bilang aku hanyalah anak kutu buku yang tidak berguna. Tapi sekarang..."
+
+"Sekarang kamu adalah pahlawan," sambung Scarlett. "Pahlawan yang melindungi teman-temannya."
+
+Arthur menatap Scarlett dengan mata penuh perasaan. "Bukan karena game. Bukan karena skill. Tapi karena kamu semua. Kalian membuatku percaya pada diriku sendiri."
+
+Scarlett tersenyum. "Dan kamu membuatku percaya bahwa kehidupan ini tidak seburuk yang aku kira."
+
+`
+    },
+    {
+      title: "Bab 25: Misi 'Meeting the Parents' dan Serangan Kritis",
+      content: `Tiga bulan telah berlalu sejak peristiwa di Zurich. Hubungan Arthur dan Scarlett bukan hanya sekadar "teman main game" lagi. Mereka menjadi pasangan yang tidak terpisahkan di dunia nyata, namun dengan tetap membawa keanehan dunia gaming mereka ke dalam kehidupan sehari-hari.
+
+Suatu malam, Arthur mengajak Scarlett makan malam di restoran favorit mereka. Arthur tampak gelisah, bolak-balik mengecek saklar lampu yang sebenarnya tidak perlu diperiksa.
+
+"Arthur, kalau kamu nervous, level stamina-mu akan turun drastis," goda Scarlett sambil menyeruput milk tea-nya. "Tenang saja, quest makan malam ini rank-E, gampang."
+
+Arthur menatap Scarlett dengan serius. "Bukan soal makanan, Scar. Besok... aku akan bertemu orang tuamu secara resmi."
+
+Wajah Scarlett pucat pasi. Tepi gelasnya bergetar. "Oh, tidak. Itu bukan quest rank-E, Arthur. Itu Raid Boss level 100! Ayahku tipe Tanker defensif yang kebal terhadap segala jenis small talk!"
+
+Arthur menarik napas dalam-dalam, lalu mengeluarkan cincin kecil dari sakunya. Bukan cincin permata mahal, tapi cincin yang didesain menyerupai Ring of Eternal Bond dari game Realm of Avalon mereka.
+
+"Karena itu, sebelum misi berbahaya itu dimulai, aku ingin memberikan item ini," kata Arthur dengan suara gemetar namun tegas. "Scarlett Claire Rose, maukah kamu melakukan party denganku selamanya? Bukan hanya di dunia maya, tapi juga dunia nyata?"
+
+Scarlett terdiam. Matanya berkaca-kaca, lalu tiba-tiba dia tertawa tersedu-sedu sambil mengangguk cepat. "Idiot! Kau ngomongnya pakai istilah game terus! Tapi... ya! Aku mau jadi partner raid-mu selamanya!"
+`
+    },
+    {
+      title: "Bab 26: Dingin dan Perang Restoran Tionghoa",
+      content: `Keesokan harinya, Arthur berdiri di depan pintu rumah keluarga Rose. Dia memakai jas yang agak kebesaran, membuatnya terlihat seperti penguin yang sedang khawatir.
+
+Pintu terbuka. Di sana berdiri Mr. Rose, pria bertubuh besar dengan kumis lebat, dan Mrs. Rose yang tersenyum ramah (tapi dengan tatapan yang menilai nilai defense Arthur).
+
+"Jadi, kamu Arthur?" tanya Mr. Rose dengan suara berat.
+
+"Iya, Pak. Arthur Pendragon," jawab Arthur mencoba tegas.
+
+"Pendragon? Nama raja ya?" Mr. Rose memiringkan kepala. "Kamu bisa mengangkat pedang Excalibur dari batu?"
+
+"Err, tidak, Pak. Tapi aku bisa mengangkat ranking guild-ku ke top 10 server," jawab Arthur jujur, yang membuat Scarlett di belakang ayahnya menutup muka dengan kedua tangan.
+
+Makan malam berlangsung kaku. Arthur, yang panik, secara tidak sengaja memanggil Mr. Rose dengan sebutan "Boss Final".
+
+"Uh... dagingnya enak sekali, Boss Final—eh, Pak!"
+
+Mr. Rose berhenti mengunyah. Silau matanya tajam. Scarlett dengan cepat menendang kaki Arthur di bawah meja.
+
+"Gapapa, Yah, Arthur itu sering main game jadi agak error sedikit," selamat Scarlett.
+
+Arthur, yang kesakitan, justru blak-blakan. "Pak, Bu, sebenarnya tujuan kedatangan saya adalah untuk menyatakan niat menikahi Scarlett. Saya mungkin bukan ksatria dengan kuda putih, tapi saya janji akan menjaganya dengan HP dan MP penuh setiap hari!"
+
+Suasana hening. Mr. Rose menatap Arthur lama sekali. Detik-detik itu terasa seperti waktu cooldown skill ultimate yang sangat lama.
+
+Tiba-tiba, Mr. Rose tertawa keras. "Kamu anaknya lucu, Arthur! Jujur dan nekat. Lebih baik daripada pacar Scarlett dulu yang pura-pura kaya raya. Baiklah, kalau kamu bisa mengalahkan aku di catur—game favoritku—aku izinkan."
+
+Arthur tersenyum. "Catur? Itu cikal bakal strategi perang, Pak. Andaikan saja."
+
+Hasilnya? Arthur mengalahkan Mr. Rose dalam 15 menit dengan strategi rush yang dia pelajari dari Real-Time Strategy game.
+`
+    },
+    {
+      title: "Bab 27: Pernikahan dan Bug Sistem",
+      content: `Dua bulan kemudian, pernikahan Arthur dan Scarlett digelar. Bukan pernikahan biasa. Karena keduanya terobsesi dunia fantasi, undangan pernikahan mereka didesain seperti quest scroll kuno.
+
+Di altar, Arthur mengenakan setelan jas modern tapi dengan aksen bros berbentuk pedang di dada. Scarlett memakai gaun pengantin putih yang indah, namun veil-nya disematkan jepit rambut berbentuk sayap peri.
+
+Hujan turun deras di luar gereja, mengingatkan mereka pada malam pertama mereka bertemu.
+
+"Arthur," bisik Scarlett saat mereka berdiri berhadapan. "Kamu tidak lupa bawa cincangnya kan? Jangan bilang inventory-mu penuh."
+
+"Tidak mungkin. Aku sudah mengunci slot ini khusus untuk item rare," bercanda Arthur.
+
+Pendeta tersenyum melihat keanehan pasangan ini. "Arthur, apakah kamu bersedia menerima Scarlett sebagai istrimu, untuk menemaninya dalam keadaan lag, disconnect, maupun koneksi lancar, sampai maut memisahkan?"
+
+Seluruh tamu tertawa. Arthur mengangguk dengan mata berkaca-kaca. "Saya bersedia. Saya akan jadi tanker-nya selamanya."
+
+"Dan apakah kamu, Scarlett, bersedia menerima Arthur, untuk menemaninya meng-grinding kehidupan sehari-hari, meski drop item-nya cuma masalah dan tagihan listrik?"
+
+Scarlett tertawa sambil menangis. "Saya bersedia! Aku akan jadi healer terbaikmu."
+
+Mereka bertukar cincin. Saat Arthur mencium istrinya, lampu di gereja tiba-tiba berkedip-kedip dan musik organ berubah menjadi musik victory fanfare dari game favorit mereka (berkat jasa sang pendeta yang iseng dan keponakan Arthur yang bertugas sound system).
+
+Semua tamu bertepuk tangan dan tertawa. Mr. Rose bahkan menyeka air mata sambil bergumam, "Anak muda zaman sekarang..."
+`
+    },
+    {
+      title: "Bab 28: Kehidupan Baru",
+      content: `Setelah pernikahan, Arthur dan Scarlett pindah ke apartemen kecil di London. Keduanya melanjutkan pendidikan sambil bekerja paruh waktu.
+
+Guild Knights of the Round Table tetap aktif, meski aktivitas mereka berkurang karena kesibukan masing-masing. Namun, mereka tetap bertemu setiap akhir pekan untuk bermain bersama.
+
+"Kalian dengar beritanya?" tanya Alfred suatu malam. "Realm of Avalon akan meluncurkan expansion baru bulan depan."
+
+"SERIOUSLY?!" teriak Leo dengan antusias. "AKU TIDAK SABAR!"
+
+Charlotte tersenyum. "Aku sudah siapkan build baru untuk expansion ini."
+
+Arthur memandangi teman-temannya dengan perasaan hangat. Meski kehidupan dewasa semakin sibuk, ikatan mereka tidak pernah pudar.
+
+"By the way," ujar Scarlett sambil memegang perutnya. "Aku ada announcement."
+
+Semua menjadi diam. Arthur menatap istrinya dengan penasaran.
+
+"Aku... hamil."
+
+Arthur terdiam beberapa detik sebelum akhirnya tersenyum lebar. "SERIOUSLY?!"
+
+Guild meledak dengan ucapan selamat. Liam bahkan berdiri dan berteriak, "QUEST BARU TERBUKA! RAISING A CHILD!"
+
+Arthur memeluk istrinya erat. "Terima kasih, Scar. Untuk semuanya."
+
+Scarlett tersenyum sambil menatap mata suaminya. "Tidak, Arthur. Terima kasih sudah menjadi ksatria dalam hidupku."
+`
+    },
+    {
+      title: "Bab 29: Anugerah Terbesar",
+      content: `Sembilan bulan kemudian, Scarlett melahirkan anak kembar—seorang anak laki-laki dan seorang anak perempuan.
+
+"Bagaimana kita menamai mereka?" tanya Arthur sambil menggendong kedua bayinya.
+
+Scarlett tersenyum lelah namun bahagia. "Bagaimana kalau Leo untuk yang laki-laki? Untuk menghormati teman kita yang telah banyak membantu kita."
+
+Arthur mengangguk. "Dan untuk yang perempuan... bagaimana kalau Avalon? Untuk mengenang dunia tempat kita bertemu."
+
+"Avalon. Namanya indah."
+
+Kedua belas anggota guild datang ke rumah sakit untuk melihat bayi baru lahir itu. Mereka datang membawa hadiah dengan bungkus bertema game.
+
+"Maaf ya hadiahnya agak unik," ujar Mila sambil menunjukkan boneka naga. "Tapi ini adalah maskot dari misi pertama kalian berdua."
+
+Arthur tertawa. "Tidak apa-apa. Aku yakin Leo dan Avalon akan menyukainya."
+
+Di sudut ruangan, Mr. Rose berdiri dengan mata berkaca-kaca. Dia tidak pernah membayangkan bahwa game yang dulu dia benci akan membawa kebahagiaan begitu besar ke dalam hidup putrinya.
+
+"Arthur," panggil Mr. Rose. "Aku... aku minta maaf. Dulu aku salah menilaimu. Kamu adalah menantu terbaik yang bisa aku harapkan."
+
+Arthur tersenyum. "Tidak perlu minta maaf, Pak. Justru saya yang berterima kasih. Karena Anda, saya bisa bertemu dengan Scarlett."
+`
+    },
+    {
+      title: "Bab 30 : ENDING 1: New Game Plus",
+      content: `Lima tahun berlalu.
+
+Rumah tangga Arthur dan Scarlett dipenuhi ketenangan dan kegaduhan kecil yang manis. Mereka duduk di sofa ruang tamah, Arthur sedang menggendong Noel kecil yang berusia 3 tahun, sementara Avalon tidur pulas di pangkuan Scarlett.
+
+"Sayang, lihat nih," panggil Arthur. "Anak kita baru saja menghancurkan tower pertahanan musuh di game tablet-nya. Dia bakal jadi pro-player!"
+
+Scarlett melirik dari dapur sambil membawa dua cangkir teh. "Jangan terlalu keras, Art. Nanti trauma dia kalau kalah. Lagipula, dia masih level 3 di dunia nyata. Waktunya makan, bukan main."
+
+Noel kecil menatap ayahnya dengan polos. "Ayah, nanti kita party lagi ya?"
+
+Arthur mencium dahi anaknya. "Tentu, Nak. Kita adalah satu guild."
+
+Scarlett duduk di samping suaminya, menempelkan bahunya. "Taukah kamu, Arthur? Dulu aku pikir game itu hanya pelarian. Tapi ternyata, sistem random matchmaking itu memberiku hadiah terbaik."
+
+Arthur tersenyum, memeluk kedua orang tercintanya. "Iya. Game-nya sudah selesai, sekarang kita main di mode New Game Plus. Dan levelnya... jauh lebih seru."
+
+Mereka tertawa bersama, sambil di luar jendela, pelangi mulai terbentuk setelah hujan sore—seperti jembatan menuju dunia fantasi yang kini telah menjadi kenyataan di hidup mereka.
+
+                                       “DIGITAL VOID ENDING: ACHIEVED
+`
+    },
+    {
+      title: "ENDING 2: Bab 31: Menuju Awal yang Baru",
+      content: `Layar di depan Arthur berkedip-kedip. Tulisan [START NEW GAME] berubah menjadi countdown.
+
+INITIALIZING NEW WORLD...
+LOADING ASSETS...
+IMPORTING S-RANK BONUSES...
+
+Arthur merasakan sensasi aneh—seperti jatuh ke dalam lubang tanpa dasar, namun tanpa rasa takut. Ingatannya tentang Scarlett, tentang guild, tentang anak-anaknya—semuanya masih utuh di kepalanya. Jika ini memang game, maka ini adalah New Game Plus: mode permainan baru dengan membawa kemampuan dan memori dari permainan sebelumnya.
+
+"Jika aku bisa membawa ingatanku," gumam Arthur, "maka aku bisa mengubah takdir."
+
+Layar menampilkan tiga pilihan dunia:
+
+Text
+[1] MODERN WORLD (Realistic Simulation)
+[2] REALM OF AVALON (High Fantasy)
+[3] CUSTOM WORLD (Hybrid Mode - UNLOCKED with S-Rank)
+
+Arthur tersenyum tipis. Pilihan ketiga adalah fitur khusus yang hanya tersedia untuk pemain dengan peringkat S. Dengan opsi ini, dia bisa menciptakan dunia gabungan—memadai realitas modern yang nyaman dengan elemen fantasi yang mendebarkan.
+
+"Kalau begitu... mari kita ciptakan dunia yang sempurna."
+
+Arthur memilih [3] CUSTOM WORLD.
+
+Sebuah editor dunia muncul di layar. Arthur mulai mengetik dengan cepat, mengubah parameter demi parameter.
+
+Text
+WORLD NAME: Neo-Avalon
+MAGIC SYSTEM: ENABLED
+TECHNOLOGY LEVEL: Modern-Fantasy Hybrid
+PLAYER RETENTION: MEMORY PRESERVED
+COMPANION RETENTION: AUTO-SYNC WITH HALL OF FAME
+`
+    },
+    {
+      title: "Bab 32: Neo-Avalon",
+      content: `Arthur terbangun dengan napas terengah. Langit-langit di atasnya bukan langit-langit kamarnya yang biasa—ini adalah langit-langit batu alam dengan ukiran rune kuno yang memancarkan cahaya lembut.
+
+Dia bangun dan memandang sekeliling. Dia berada di sebuah kamar yang luas, dengan dinding batu dan jendela kaca besar yang menampilkan pemandangan... kota?
+
+Arthur mendekati jendela. Matanya melebar melihat apa yang ada di luar.
+
+Sebuah kota modern dengan gedung-gedung pencakar langit berdiri di kejauhan, namun di antara gedung-gedung itu ada menara-menara sihir yang memancarkan cahaya. Mobil-mobil terbang bercampur dengan naga-naga kecil yang jinak. Orang-orang berjalan di jalan dengan pakaian modern, namun ada juga yang mengenakan jubah dan membawa tongkat sihir.
+
+"Neo-Avalon..." bisik Arthur kagum. "Dunia yang kuciptakan... benar-benar nyata."
+
+Tiba-tiba, sebuah jendela notifikasi muncul di udara di depannya—seperti hologram.
+
+Text
+WELCOME TO NEO-AVALON
+PLAYER: ARTHUR PENDRAGON
+LEVEL: 1 (NEW GAME PLUS)
+CLASS: WORLD ARCHITECT (LEGENDARY)
+UNIQUE SKILL: WORLD EDITOR (LIMITED)
+Arthur tersenyum. Kelas barunya bukan lagi "Knight" atau "Commander", melainkan "World Architect"—sebuah kelas langka yang memberinya kemampuan memanipulasi dunia ini.
+
+Tapi sebelum dia bisa bereksperimen lebih lanjut, suara ketukan terdengar di pintu kamarnya.
+
+"Arthur? Kamu sudah bangun?"
+
+Suara itu. Suara yang sangat dikenalnya.
+
+Arthur berlari membuka pintu. Di sana berdiri seorang gadis berambut pirang dengan mata tajam namun lembut—mata yang sama dengan ScarletFlame, namun dengan ekspresi bingung.
+
+"Scarlett?!"
+
+Gadis itu mengerutkan dahi. "Kenapa kamu lihatku seperti baru pertama kali ketemu? Kita kan sudah menikah tiga tahun lalu di... di..."
+
+Wajah Scarlett pucat. Matanya melebar.
+
+"Arthur... kenapa aku ingat semuanya? Kenapa aku ingat kita punya anak? Noel dan Avalon? Tapi... mereka tidak ada di sini?"
+
+Arthur memegang bahu Scarlett dengan lembut. "Tenang, Scar. Aku juga ingat semuanya. Dan aku tahu ini terdengar gila, tapi... dunia sebelumnya adalah simulasi. Aku memulai game baru, dan sepertinya sistem membawa kita ke sini bersama."
+
+Scarlett menatap Arthur lama sekali. "Simulasi? Maksudmu... anak-anak kita... tidak nyata?"
+
+Arthur terdiam. Pertanyaan itu menyakitkan. Tapi dia menggeleng perlahan.
+
+"Mereka nyata untuk kita, Scar. Memori tentang mereka nyata. Dan aku berjanji... di dunia ini, kita akan menemukan mereka lagi."
+
+Scarlett menggigit bibirnya, menahan air matanya. Lalu dia mengangguk.
+
+"Baiklah. Kalau kamu bilang begitu... aku percaya. Tapi sekarang, tolong jelaskan kenapa ada sistem melayang di depan wajahku yang bilang aku adalah 'S-Rank Healer'?"
+
+Arthur tertawa. "Karena kamu memang hebat, Scar."
+`
+    },
+    {
+      title: "Bab 33: : Reuni Para Legenda",
+      content: `Ternyata, Arthur tidak salah. Keputusannya mengaktifkan "Companion Retention" membuat semua anggota guild yang memiliki peringkat tinggi di "simulasi" sebelumnya ikut terbawa ke Neo-Avalon.
+
+Sore itu, Arthur dan Scarlett berjalan ke alun-alun kota. Di sana, sepuluh orang sudah berkumpul dengan wajah bingung namun mulai memahami situasi.
+
+Liam berdiri dengan postur tegapnya, memegang pedang baru yang muncul bersamaan dengan kedatangannya. "Arthur! Jadi ini ulahmu?!"
+
+"Maaf, Liam," jawab Arthur. "Aku tidak menyangka efeknya sebesar ini."
+
+Alfred menatap sistem melayang di depan matanya dengan minat yang besar. "Fasih. Sistem ini mirip dengan game Realm of Avalon, tapi... lebih nyata."
+
+Cedric mengangguk setuju. "Dan sepertinya status kita di simulasi sebelumnya mempengaruhi kemampuan kita di sini. Aku mendapatkan kelas 'Noble Strategist' dengan skill leadership yang ditingkatkan."
+
+Leo sedang menguji busur barunya, menembakkan panah ke target yang diciptakan dari udara. "INI KEREN BANGET! Aku bisa nembak dengan presisi 100%!"
+
+Sebastian tersenyum melihat semua orang mulai menyesuaikan diri. "Sepertinya kita memulai petualangan baru, teman-teman."
+
+Olivia, Charlotte, Lynn, Mila, dan Sophia juga sudah berkumpul, masing-masing mengecek kemampuan baru mereka.
+
+"Ada satu hal yang menggangguku," ujar Sophia dengan tatapan serius. "Kalau ini adalah game baru... di mana NPC-nya? Dan di mana ancamannya?"
+
+Arthur mengerutkan dahi. "Aku tidak memprogram ancaman spesifik saat menciptakan dunia ini. Tapi..."
+
+Tepat saat itu, langit di atas Neo-Avalon tiba-tiba menjadi gelap. Gempa bumi mengguncang kota. Dari tanah, muncul celah-celah kegelapan yang mulai memuntahkan monster-monster aneh.
+
+"Diamonds!" teriak Lynn ketakutan.
+
+"Notifikasi sistem!" ujar Mila sambil menunjuk ke langit.
+
+Di udara, muncul pesan besar yang terlihat oleh semua pemain:	
+WARNING: SYSTEM ERROR DETECTED
+CORRUPTED DATA FROM PREVIOUS SIMULATION HAS INFILTRATED NEO-AVALON
+THREAT LEVEL: OMEGA
+MISSION: PURIFY THE WORLD OR FACE TOTAL DELETION
+
+Arthur mendecakkan lidah. "Ternyata, data dari simulasi sebelumnya tidak sepenuhnya bersih. Ada virus atau corrupt data yang ikut terbawa."
+
+Scarlett menghunus tongkat sihir barunya. "Artinya, misi kita belum selesai?"
+
+Arthur tersenyum, menghunus pedang ekskalibur versi Neo-Avalon-nya.
+
+"Tidak, Scar. Ini baru dimulai. Kita adalah Knights of the Round Table. Kita adalah guild terkuat. Dan di dunia ini... kita adalah arsitek takdir kita sendiri."
+
+Liam berdiri di samping Arthur, mengangkat perisainya. "Untuk Leo dan Avalon!"
+
+"Untuk keluarga!" tambah Scarlett.
+
+Semua anggota guild mengangkat senjata masing-masing.
+
+"UNTUK NEO-AVALON!" seru mereka bersamaan.
+`
+    },
+    {
+      title: "Bab 34: Pertempuran untuk Masa Depan",
+      content: `Pertempuran berlangsung sengit. Monster-monster dari data corrupt menyerang kota dari segala arah. Tapi para pemain—yang sekarang memiliki kemampuan nyata dari game—bekerja sama dengan koordinasi yang sudah terasah selama "10 tahun" simulasi.
+
+Arthur menebas monster dengan pedangnya sambil mengaktifkan skill World Editor.
+
+"EDIT: BARRIER UP!"
+
+Sebuah tembok energi muncul, melindungi warga sipil yang bingung.
+
+Scarlett menyembuhkan yang terluka dengan mantra yang jauh lebih kuat dari sebelumnya. "Aku tidak akan kehilangan satu pun dari kalian lagi!"
+
+Di tengah kekacauan, Arthur melihat sesuatu—dua sosok kecil yang terjebak di tengah reruntuhan.
+
+Matanya melebar.
+
+"NOEL? AVALON?!"
+
+Dua anak kecil itu—sama persis dengan anak-anaknya di simulasi—menangis ketakutan di tengah battlefield.
+
+"Arthur!" teriak Scarlett, juga melihat mereka. "Mereka... mereka di sini!"
+
+Arthur berlaki menuju anak-anaknya. Tapi sebuah monster besar menghalangi jalannya.
+
+"TIDAK!"
+
+Arthur mengumpulkan semua kekuatannya. Skill World Editor-nya bergetar.
+
+"EDIT: DELETE ENTITY!"
+
+Monster itu terhapus dari eksistensi. Arthur jatuh berlutut, kelelahan. Menggunakan skill editor langsung menguras energinya.
+
+Tapi dia tidak peduli. Dia berlari lagi, menggendong Noeldan Avalon ke dalam pelukannya.
+
+"Ayah!" teriak Noel kecil. "Aku takut!"
+
+"Kami ada di sini, Nak," jawab Arthur dengan mata berkaca-kaca. "Kami ada di sini."
+
+Scarlett tiba di sisi mereka, memeluk seluruh keluarganya.
+
+"Keluarga kita... utuh," bisik Scarlett.
+
+Alfred dan yang lainnya melihat aksi itu dengan senyum.
+
+"Tugas selesai," ujar Alfred. "Quest utama terselesaikan."
+`
+    },
+    {
+      title: "Bab 35: Game Master yang Bahagia",
+      content: `Lima tahun berlalu di Neo-Avalon.
+
+Arthur duduk di singgasana di kastil yang dibangunnya sendiri di pusat kota. Di sampingnya, Scarlett duduk dengan mahkota bunga di kepalanya. Noel dan Avalon bermain di taman kastil, berlatih sihir dan pedang di bawah pengawasan Liam dan Leo senior.
+
+Dunia ini tidak sempurna—masih ada monster yang muncul sesekali, masih ada bug yang harus diperbaiki. Tapi itu adalah dunia yang mereka ciptakan bersama.
+
+"Arthur," panggil Scarlett. "Apa kamu menyesal memulai game baru?"
+
+Arthur tersenyum sambil memandangi keluarganya.
+
+"Tidak. Karena di game ini, kita tidak hanya bermain. Kita hidup. Dan yang terpenting..."
+
+Dia memegang tangan Scarlett.
+
+"...kita menulis cerita kita sendiri."
+
+Scarlett tersenyum. "Game Master dan Healer-nya. Pasangan yang sempurna."
+
+Di layar sistem yang hanya bisa dilihat Arthur, ada statistik baru:
+
+Text
+CURRENT QUEST: RAISE A FAMILY
+DIFFICULTY: HARD
+STATUS: IN PROGRESS
+HAPPINESS LEVEL: MAX
+
+Arthur mematikan sistem itu. Dia tidak butuh statistik untuk tahu bahwa dia bahagia.
+
+Di dunia nyata atau dunia game—selama ada keluarga dan sahabat, itu adalah kemenangan terbesar.
+                 
+                                    “GAME MASTER ENDING: ACHIEVED”
+`
+    },
+    {
+      title: "ENDING 3: Bab 31: Quest Baru: Raising Twins",
+      content: `Ruangan bersalin di Rumah Sakit Royal Manchester dipenuhi kegembiraan. Arthur tidak bisa berhenti menatap kedua bayi mungil di lengan istrinya—seorang anak laki-laki dan seorang anak perempuan, lahir dengan selisih waktu tiga menit.
+
+"Noel dan Avalon," ujar Arthur dengan suara bergetar. "Nama itu... sempurna untuk mereka."
+
+Scarlett tersenyum lemah, wajahnya masih pucat setelah persalinan yang melelahkan. "Arthur... kau tahu bahwa quest kali ini tidak ada tutorialnya, kan?"
+
+Arthur tertawa. "Tentu saja. Game of Life tidak punya save point dan tidak ada reload."
+
+Di sudut ruangan, ke-10 sahabat mereka masih berdesakan. Liam sedang memegangi balon berbentuk naga yang agak kempes. Olivia dan Charlotte sedang sibuk mengambil foto dari berbagai sudut. Alfred sedang berbicara dengan Mr. Rose yang baru saja tiba dari kantornya.
+
+"Kakeknya datang!" teriak Noel—bukan si kecil, tapi sang paman yang namanya sama. "Mana cucunya? Aku mau lihat!"
+
+Mr. Rose mendorong masuk dengan wajah yang masih menunjukkan kelelahan dari kerja, tapi matanya langsung berbinar saat melihat kedua cucunya.
+
+"Tuhan... mereka sangat kecil," bisik Mr. Rose dengan suara bergetar. Dia mencoba menggapai, tapi tangannya ragu. "Apakah aman jika aku memegang mereka?"
+
+Scarlett tertawa. "Ayah, kau sudah membesarkan aku. Tentu saja aman."
+
+Mr. Rose menggendong Noel kecil dengan hati-hati. Air mata mengalir di pipinya tanpa ia sadari.
+
+"Hai, nak," bisiknya. "Aku adalah kakekmu. Dan aku janji... aku tidak akan semarah dulu. Mungkin."
+
+Semua tertawa.
+
+`
+    },
+    {
+      title: "Bab 32: Malam Pertama",
+      content: `Malam pertama di rumah setelah keluar rumah sakit adalah kekacauan total.
+
+Rumah Arthur dan Scarlett yang tadinya rapi dan tertata, kini berubah menjadi markas militer dengan perlengkapan bayi di setiap sudut. Box bayi, stroller, botol susu, popok, dan berbagai peralatan lainnya menumpuk di ruang tamah.
+
+"Arthur," panggil Scarlett dengan mata sembab karena kurang tidur. "Noel menangis lagi. Ini kali ke-berapa malam ini?"
+
+Arthur mengucek matanya. "Keempat belas. Atau kelima belas? Aku sudah kehilangan hitungan."
+
+Dia bangkit dari tempat tidur dengan langkah goyah. Tubuhnya terasa berat seperti baru selesai raid boss level 100 sendirian.
+
+Saat Arthur menghampiri box bayi, Noel kecil menangis dengan suara yang mencapai desibel tertinggi. Avalon, yang tidur di box sebelahnya, ikut terbangun dan menangis.
+
+"Sempurna," keluh Arthur. "Party wipe."
+
+Scarlett muncul di sampingnya. "Aku ambil Noel, kau ambil Avalon. Kita lakukan shift ini bersamaan."
+
+Mereka bekerja dengan koordinasi yang sudah terasah selama bertahun-tung main game bersama. Arthur menggendong Avalon sambil mengayunkan tubuhnya perlahan. Scarlett menyusui Noel.
+
+"Kau tahu," bisik Arthur di tengah hening malam. "Aku kira raid boss itu sulit. Tapi ini... ini adalah raid boss sejati."
+
+Scarlett tersenyum lelah. "Tidak ada respawn. Tidak ada retry. Satu kesempatan, satu nyawa."
+
+"Tapi..." Arthur menatap bayi di pelukannya yang mulai tenang. "Hadiahnya jauh lebih berharga."
+`
+    },
+    {
+      title: "Bab 33: Serangan Fajar",
+      content: `Pukul lima pagi, ketika Arthur dan Scarlett baru saja mendapatkan satu jam tidur, bel rumah berbunyi dengan nada yang terlalu ceria untuk waktu segitu.
+
+Arthur membuka pintu dengan wajah yang mungkin terlihat seperti zombie.
+
+Di depannya berdiri Mila dan Lynn, membawa keranjang-keranjang besar yang berisi makanan dan perlengkapan bayi.
+
+"PAGI! ANGGARAN PARTY SUPPORT SUDAH TIBA!" teriak Mila dengan suara yang terlalu semangat.
+
+"Maaf," tambah Lynn dengan senyum. "Kami tidak bisa tidur karena khawatir. Jadi kami memutuskan untuk datang membantu."
+
+Scarlett muncul dari belakang Arthur dengan bayi kembar di kedua lengan. "Kalian... datang jam segini?"
+
+Mila mengangguk. "Tentu saja! Quest raising baby tidak bisa diselesaikan solo. Kalian butuh party support!"
+
+Dalam waktu singkat, rumah Arthur berubah menjadi markas operasi. Mila mengambil alih dapur, menyiapkan makanan bergizi untuk Scarlett yang sedang menyusui. Lynn membantu mencuci dan menyetrika pakaian bayi.
+
+Tepat saat matahari terbit, satu per satu anggota guild lainnya berdatangan.
+
+Liam membawa mainan-mainan aneh yang "katanya" untuk melatih refleks bayi. Alfred membawa buku-buku parenting yang setebal ensiklopedia. Charlotte dan Olivia membawa pakaian-pakaian bayi yang stylish. Sophia membawa spreadsheet jadwal tidur dan makan yang sangat detail. Leo membawa... busur mainan.
+
+"Busur mainan untuk bayi baru lahir?!" tanya Arthur dengan tidak percaya.
+
+Leo tersenyum lebar. "Tidak pernah terlalu dini untuk mulai berlatih!"
+
+Sebastian menghela napas. "Leo, mereka belum bisa menahan kepala mereka sendiri. Jangan permainan berbahaya."
+
+Cedric, yang datang terakhir, membawa sesuatu yang mengejutkan—sebuah consultant pediatrician terbaik di Manchester.
+
+"Aku menggunakan koneksi keluarga," jelas Cedric dengan tenang. "Kalian butuh bantuan profesional."
+
+Arthur memandangi seluruh ruang tamanya yang dipenuhi teman-temannya. Matanya mulai berkaca-kaca.
+
+"Kalian... kalian tidak perlu melakukan semua ini."
+
+Alfred tersenyum. "Arthur, kita adalah guild. Kita adalah keluarga. Quest kalian adalah quest kami juga."
+
+Scarlett yang sedang duduk di sofa memandangi suaminya dan teman-temannya dengan mata berkaca-kaca pula.
+
+"Terima kasih," bisiknya. "Terima kasih sudah menjadi family support kami."
+`
+    },
+    {
+      title: "Bab 34: Pengalaman Bertahap",
+      content: `Bulan-bulan pertama sebagai orang tua adalah roller coaster emosional. Ada hari-hari di mana Arthur merasa ingin menyerah, dan ada hari-hari di mana dia merasa adalah pria paling beruntung di dunia.
+
+Malam itu, Noel kecil menangis tanpa henti selama tiga jam. Arthur sudah mencoba segalanya—menggendong, menyanyi, mengayunkan—tapi tidak ada yang berhasil.
+
+"Arthur," panggil Scarlett dengan suara lemah. "Aku yang ambil. Kau sudah delapan jam tidak tidur."
+
+Arthur menggeleng. "Tidak. Aku baik-baik saja."
+
+"Arthur, matamu sudah merah. Kau hampir tidak bisa berdiri tegak."
+
+Tepat saat Arthur hendak memprotes, suara ketukan terdengar di pintu kamar. Alfred berdiri di sana dengan buku di tangan.
+
+"Aku dengar ada masalah," ujar Alfred dengan tenang. "Boleh aku mencoba?"
+
+Arthur terkejut. "Alfred? Kau masih bangun?"
+
+"Tidak bisa tidur. Jadi aku membaca buku ini." Alfred mengangkat bukunya—The Secrets of Calming Babies. "Ada teknik yang disebut 'The 5 S's'. Boleh aku tunjukkan?"
+
+Dengan izin Arthur, Alfred menggendong Noel kecil. Dia melakukan gerakan-gerakan tertentu—swaddling, side/stomach position, shushing, swinging, dan sucking—dalam waktu kurang dari lima menit, Leo kecil tertidur pulas.
+
+Arthur menatap Alfred dengan mulut terbuka. "Bagaimana... bagaimana kau bisa?"
+
+Alfred tersenyum. "Aku adalah pemimpin guild. Tugas utamaku adalah memastikan semua anggota tim bisa berfungsi dengan optimal. Termasuk anggota termuda kita."
+
+Arthur hampir menangis. "Terima kasih, Alfred. Kau benar-benar penyelamat."
+
+Alfred menepuk bahu Arthur. "Sekarang, tidurlah. Aku yang akan jaga malam ini. Besok, Sophia akan menggantikanku. Kami sudah membuat jadwal rotasi."
+
+Arthur tercengang. "Kalian... membuat jadwal rotasi untuk menjaga anak kami?"
+
+"Kami adalah guild," jawab Alfred sederhana. "Kita saling mendukung."
+`
+    },
+    {
+      title: "Bab 35: 'Misi Pertama' Taman Bermain",
+      content: `
+Ketika Noel dan Avalon berusia enam bulan, Arthur dan Scarlett memutuskan untuk membawa mereka ke taman untuk pertama kalinya.
+
+Ini adalah misi besar. Mereka harus mempersiapkan semua perlengkapan—stroller ganda, tas popok, susu cadangan, mainan cadangan, topi, sunscreen, dan segala macam hal yang tidak pernah Arthur bayangkan akan dia butuhkan dalam hidupnya.
+
+"Status check," ujar Arthur dengan nada komandan. "Popok cadangan?"
+
+"Check," jawab Scarlett.
+
+"Susu cadangan?"
+
+"Check."
+
+"Mainan cadangan?"
+
+"Check."
+
+"Kami siap?" tanya Arthur dengan napas dalam.
+
+Scarlett tersenyum. "Sedia payung sebelum hujan. Mari kita mulai misi ini."
+
+Mereka mendorong stroller ganda keluar rumah. Tepat saat itu, sebuah van hitam berhenti di depan mereka. Pintu terbuka, dan keluarlah seluruh anggota guild.
+
+"KALIAN KIRA KALIAN PERGI SENDIRI?!" teriak Liam. "INI ADALAH MISI GUILD!"
+
+Arthur tidak percaya. "Kalian... mengikuti kami?"
+
+Olivia mengangguk. "Kami tidak akan melewatkan momen pertama keponakan kami ke taman. No way."
+
+Leo—si paman—sudah membawa kameranya. "Aku akan mendokumentasikan semuanya! Photo session dimulai!"
+
+Sepanjang jalan ke taman, rombongan mereka menarik perhatian banyak orang. Bayangkan: sepasang suami istri muda dengan stroller ganda, diikuti oleh sepuluh orang dewasa dengan berbagai tingkah laku—ada yang membawa kamera, ada yang membawa first aid kit, ada yang membawa snack, ada yang membawa... busur mainan lagi.
+
+"Leo, seriusan dengan busur itu?" tanya Scarlett dengan nada lelah.
+
+Leo tersenyum. "Tidak pernah tahu kapan kita butuh pertahanan!"
+
+Di taman, anak-anak menjadi pusat perhatian. Avalon, dengan mata besarnya yang tajam seperti ibunya, tertawa setiap kali Lynn membuat gelembung sabun. Noel kecil, dengan rambut hitamnya seperti ayahnya, mencoba meraih setiap benda yang bergerak.
+
+"Mereka tumbuh begitu cepat," bisik Arthur sambil menatap anak-anaknya.
+
+Scarlett membaringkan kepalanya di bahu Arthur. "Terlalu cepat. Rasanya baru kemarin mereka lahir."
+
+Di kejauhan, Mr. Rose duduk di bangku taman dengan Mrs. Rose, menonton cucu-cucu mereka dengan senyum lebar.
+
+"Mereka akan menjadi orang tua yang hebat," ujar Mrs. Rose.
+
+Mr. Rose mengangguk. "Dengan guild seperti itu mendukung? Mereka tidak mungkin gagal."
+
+Bab 36: Tantangan Baru
+Ketika Noel dan Avalon berusia dua tahun, tantangan baru muncul.
+
+"Aku tidak mau makan!" teriak Noel kecil dengan suara lantang, melempar sendoknya ke lantai.
+
+"AKU JUGA TIDAK MAU!" Avalon mengikuti jejak kakaknya.
+
+Arthur dan Scarlett saling berpandangan dengan wajah letih. Fase picky eater telah tiba.
+
+"Baiklah," ujar Arthur dengan napas dalam. "Kita butuh strategi baru."
+
+"Strategi apa?" tanya Scarlett dengan nada skeptis.
+
+Arthur mengambil tabletnya dan membuka aplikasi grup guild. EMERGENCY MEETING. CODE: PICKY EATER.
+
+Dalam waktu 30 menit, seluruh guild berkumpul di rumah Arthur.
+
+"Apa yang terjadi?" tanya Alfred dengan nada serius.
+
+"Noel dan Avalon menolak makan sayur," jelas Arthur. "Aku sudah mencoba segalanya. Negosiasi, bujukan, bahkan ancaman tidak ada screen time. Tidak ada yang berhasil."
+
+Sophia membuka laptopnya. "Aku akan membuat analisis strategi feeding untuk toddler."
+
+Charlotte menggeleng. "Tidak perlu terlalu rumit. Kalian butuh kreativitas."
+
+Mila mengangkat tangan. "Aku punya ide! Bagaimana kalau kita buat makanan itu terlihat seperti monster yang harus dikalahkan?"
+
+Semua menatap Mila dengan binguk.
+
+Mila menjelaskan, "Anak-anak suka bermain, kan? Kalau kita buat makanan itu seperti musuh dalam game yang harus mereka 'kalahkan', mungkin mereka akan mau makan."
+
+Arthur mengerutkan dahi. "Itu... sebenarnya masuk akal."
+
+Mereka mencoba strategi itu. Malam itu, Arthur dan Scarlett menyajikan sayur dengan bentuk-bentuk lucu—wajah monster dari brokoli, gunung dari wortel, pohon dari kacang panjang.
+
+"Nah, Noel, Avalon," ujar Arthur dengan nada dramatis. "Kalian adalah ksatria hebat. Musuh-musuh monster ini harus kalian kalahkan!"
+
+Noel kecil menatap piringnya dengan mata berbinar. "MONSTER?!"
+
+"Aku akan kalahkan mereka!" teriak Avalon dengan semangat.
+
+Dalam waktu singkat, piring mereka kosong.
+
+Arthur dan Scarlett saling bertatapan dengan tidak percaya.
+
+"Kenapa aku tidak memikirkan itu sebelumnya?" tanya Arthur.
+
+Scarlett tertawa. "Karena kita butuh guild untuk menemukan solusi."
+`
+    },
+    {
+      title: "Bab 36: Ulang Tahun Pertama",
+      content: `Hari ulang tahun pertama Noel dan Avalon adalah acara besar. Guild memutuskan untuk membuat pesta dengan tema "Realm of Avalon"—dunia game tempat semuanya bermula.
+
+Rumah Arthur dan Scarlett dihiasi dengan dekorasi bertema fantasi. Ada balon berbentuk naga, banner dengan lambang guild, bahkan photo booth dengan background kastil.
+
+"Tidak percaya sudah setahun," ujar Arthur kepada Scarlett saat mereka berdiri di sudut ruangan, mengamati tamu-tamu yang mulai berdatangan.
+
+Scarlett menggendong Avalon yang sedang tertidur, sementara Arthur menggendong Leo yang sedang sibuk mengunyah mainan berbentuk pedang.
+
+"Demi semua item rare di dunia ini," jawab Scarlett dengan senyum. "Setahun terasa seperti satu jam."
+
+Tamu-tamu mulai berdatangan. Mr. dan Mrs. Rose datang membawa kue besar berbentuk kastil. Teman-teman sekolah Arthur yang dulu sering mengejeknya juga datang—sekarang mereka justru mengagumi Arthur yang sudah menjadi ayah muda yang sukses.
+
+Tapi yang paling menonjol adalah kedatangan seluruh guild. Mereka tidak hanya datang sebagai tamu—mereka datang sebagai panitia, katering, entertainer, dan keamanan.
+
+Liam sudah memasang kostum ksatria dan berperan sebagai "guard" di pintu masuk. Olivia dan Charlotte membuat performance tarian dan nyanyian. Leo sudah menyiapkan area panahan untuk anak-anak yang lebih besar. Alfred menjadi MC dengan mikrofon yang dia bawa sendiri.
+
+"Sahabat-sahabat sekalian!" suara Alfred menggema di ruangan. "Selamat datang di perayaan ulang tahun pertama Noel dan Avalon Pendragon! Anak-anak dari komandan guild terhebat, Arthur Pendragon, dan healer terbaik, Scarlett Claire Rose!"
+
+Semua tamu bertepuk tangan. Arthur merasa wajahnya memerah karena malu, tapi juga bangga.
+
+"Tapi sebelum kita mulai," lanjut Alfred, "ada satu pengumuman penting dari guild."
+
+Semua menjadi diam. Arthur dan Scarlett saling berpandangan dengan bingung.
+
+Alfred tersenyum. "Sebagai guild, kami telah berdiskusi dan memutuskan untuk memberikan hadiah spesial untuk Noel dan Avalon."
+
+Dia mengangkat sebuah amplop besar.
+
+"Kami telah membuka rekening tabungan pendidikan untuk kedua anak ini. Setiap anggota guild akan berkontribusi setiap bulan sampai mereka berusia 18 tahun. Dana ini akan digunakan untuk pendidikan, hobi, atau kebutuhan apapun yang mereka perlukan."
+
+Arthur terpaku. Matanya berkaca-kaca.
+
+"Kalian... kalian tidak perlu..."
+
+Liam memotong, "Kita adalah guild, Arthur. Kita adalah keluarga. Ini adalah apa yang keluarga lakukan."
+
+Scarlett sudah menangis di samping suaminya. "Aku tidak tahu harus berkata apa. Terima kasih... tidak cukup untuk ini."
+
+Alfred tersenyum lembut. "Katakan saja: sampai jumpa di raid berikutnya."
+`
+    },
+    {
+      title: "Bab 37: Pelajaran Hidup",
+      content: `Ketika Noel dan Avalon berusia empat tahun, mereka mulai menunjukkan ketertarikan pada game—seperti ayah dan ibu mereka.
+
+"AYAH! Aku mau main game itu!" teriak Noel kecil, menunjuk layar komputer Arthur.
+
+Arthur menatang anaknya dengan ragu. "Ini game yang agak sulit, Nak. Kamu yakin?"
+
+"Aku kuat!" Noel kecil mengangguk dengan percaya diri.
+
+Avalon yang sedang duduk di pangkuan Scarlett juga mengangkat tangan. "Aku juga mau!"
+
+Arthur dan Scarlett saling bertukar pandang dengan senyum.
+
+"Baiklah," ujar Arthur. "Tapi ada syaratnya."
+
+"Apa?" tanya kedua anak serempak.
+
+Arthur berlutut agar sejajar dengan mata anak-anaknya. "Game ini mengajarkan kita satu hal yang sangat penting. Kalian tidak bisa menang sendirian. Kalian butuh teman. Kalian butuh tim. Jadi, kalau kalian mau main, kalian harus main bersama. Tidak ada saling menjatuhkan, tidak ada ngambek kalau kalah. Kalian adalah tim. Setuju?"
+
+Noel dan Avalon mengangguk serempak. "SETUJU!"
+
+Scarlett tersenyum. "Kalau begitu, mari kita mulai quest pertama kalian."
+
+Mereka duduk bersama di depan komputer—Arthur di tengah, dengan Noeldi satu sisi dan Avalon di sisi lain. Scarlett duduk di belakang mereka, menonton dengan penuh kasih sayang.
+
+"Nah, ini adalah kontrol," jelas Arthur sambil menunjukkan keyboard. "Tapi ingat, yang terpenting bukan skill kalian, tapi kerja sama kalian."
+
+Permainan dimulai. Awalnya kacau—Noel menekan tombol sembarangan, Avalon menjerit setiap ada monster muncul. Tapi perlahan, mereka mulai memahami mekanisme game.
+
+"Avalon, jaga belakangku!" teriak Noel kecil. "Aku serang depan!"
+
+"Oke, Kakak!" Avalon menekan tombol untuk mengeluarkan skill penyembuhan.
+
+Arthur memandangi anak-anaknya dengan mata berkaca-kaca. Dia tidak pernah membayangkan akan memiliki momen seperti ini—mengajarkan game ke anak-anaknya, persis seperti yang dia dan Scarlett lakukan bertahun-tahun lalu.
+
+"Bagus sekali!" puji Arthur. "Kalian adalah tim yang hebat!"
+
+Scarlett berbisik di telinga suaminya, "Kamu adalah ayah yang hebat, Arthur."
+
+Arthur membalas dengan senyum. "Dan kamu adalah ibu yang sempurna, Scar."
+`
+    },
+    {
+      title: "Bab 38: Pelajaran Hidup",
+      content: `Ketika Noel dan Avalon berusia empat tahun, mereka mulai menunjukkan ketertarikan pada game—seperti ayah dan ibu mereka.
+
+"AYAH! Aku mau main game itu!" teriak Noel kecil, menunjuk layar komputer Arthur.
+
+Arthur menatang anaknya dengan ragu. "Ini game yang agak sulit, Nak. Kamu yakin?"
+
+"Aku kuat!" Noel kecil mengangguk dengan percaya diri.
+
+Avalon yang sedang duduk di pangkuan Scarlett juga mengangkat tangan. "Aku juga mau!"
+
+Arthur dan Scarlett saling bertukar pandang dengan senyum.
+
+"Baiklah," ujar Arthur. "Tapi ada syaratnya."
+
+"Apa?" tanya kedua anak serempak.
+
+Arthur berlutut agar sejajar dengan mata anak-anaknya. "Game ini mengajarkan kita satu hal yang sangat penting. Kalian tidak bisa menang sendirian. Kalian butuh teman. Kalian butuh tim. Jadi, kalau kalian mau main, kalian harus main bersama. Tidak ada saling menjatuhkan, tidak ada ngambek kalau kalah. Kalian adalah tim. Setuju?"
+
+Noel dan Avalon mengangguk serempak. "SETUJU!"
+
+Scarlett tersenyum. "Kalau begitu, mari kita mulai quest pertama kalian."
+
+Mereka duduk bersama di depan komputer—Arthur di tengah, dengan Noeldi satu sisi dan Avalon di sisi lain. Scarlett duduk di belakang mereka, menonton dengan penuh kasih sayang.
+
+"Nah, ini adalah kontrol," jelas Arthur sambil menunjukkan keyboard. "Tapi ingat, yang terpenting bukan skill kalian, tapi kerja sama kalian."
+
+Permainan dimulai. Awalnya kacau—Noel menekan tombol sembarangan, Avalon menjerit setiap ada monster muncul. Tapi perlahan, mereka mulai memahami mekanisme game.
+
+"Avalon, jaga belakangku!" teriak Noel kecil. "Aku serang depan!"
+
+"Oke, Kakak!" Avalon menekan tombol untuk mengeluarkan skill penyembuhan.
+
+Arthur memandangi anak-anaknya dengan mata berkaca-kaca. Dia tidak pernah membayangkan akan memiliki momen seperti ini—mengajarkan game ke anak-anaknya, persis seperti yang dia dan Scarlett lakukan bertahun-tahun lalu.
+
+"Bagus sekali!" puji Arthur. "Kalian adalah tim yang hebat!"
+
+Scarlett berbisik di telinga suaminya, "Kamu adalah ayah yang hebat, Arthur."
+
+Arthur membalas dengan senyum. "Dan kamu adalah ibu yang sempurna, Scar."
+
+`
+    },
+    {
+      title: "Bab 39: Generasi Baru",
+      content: `Lima tahun berlalu. Noel dan Avalon kini berusia lima tahun—sehat, cerdas, dan penuh semangat.
+
+Suatu hari, seluruh guild berkumpul di taman kota—tempat di mana Arthur dan Scarlett pertama kali bertemu secara langsung. Foto grup diambil, dengan Arthur dan Scarlett di tengah, Noel dan Avalon di depan mereka, dan seluruh anggota guild di sekeliling mereka.
+
+"Semua orang, lihat ke sini!" teriak Leo—si paman—dari balik kameranya. "Dalam 3... 2... 1... CHEESE!"
+
+klik
+
+Foto itu menunjukkan keluarga yang tidak biasa—bukan keluarga yang dihubungkan oleh darah semata, tapi oleh ikatan persahabatan yang lebih kuat dari apapun.
+
+Setelah foto, mereka duduk di rerumputan, menikmati piknik sore.
+
+"Kakek," panggil Leo kecil pada Mr. Rose. "Ceritakan lagi bagaimana Ayah dan Ibu bertemu!"
+
+Mr. Rose tersenyum. "Ah, lagi? Kau sudah mendengarnya seratus kali."
+
+"Tapi aku suka cerita itu!" Protes Avalon.
+
+Mr. Rose menghela napas pura-pura, lalu mulai bercerita.
+
+" Dahulu kala, ada seorang ksatria yang kesepian bernama Arthur. Dia tidak punya teman di dunia nyata, tapi di dunia maya, dia adalah pahlawan..."
+
+ kecil dan Avalon mendengarkan dengan mata berbinar.
+
+Arthur menarik Scarlett lebih dekat ke pelukannya. "Bayangkan," bisiknya. "Kalau malam itu aku tidak login, kita tidak akan di sini sekarang."
+
+Scarlett tersenyum. "Dan kalau aku tidak menjadi healer di raid itu, kita tidak akan saling mengenal."
+
+"Realm of Avalon," ujar Arthur. "Game yang mengubah hidup kita."
+
+"Dan menciptakan keluarga ini," sambung Scarlett.
+
+Di kejauhan, suara tawa anak-anak dan obrolan sahabat memenuhi taman. Matahari sore memancarkan cahaya keemasan, menciptakan pelangi redup di langit—seperti jembatan menuju dunia fantasi yang kini telah menjadi kenyataan.
+
+Alfred mendekati Arthur dan Scarlett, membawa dua gelas minuman.
+
+"Untuk tahun-tahun yang akan datang," ujar Alfred, mengangkat gelasnya.
+
+Arthur dan Scarlett mengangkat gelas mereka.
+
+"Untuk keluarga," kata Arthur.
+
+"Untuk persahabatan," tambah Scarlett.
+
+"Dan untuk petualangan yang belum berakhir," sambung Alfred.
+
+Mereka bertiga bertepuk gelas, lalu tertawa bersama.
+
+Di dunia game, quest selalu berakhir. Tapi di dunia nyata, petualangan tidak pernah benar-benar selesai.
+
+Dan untuk Arthur, Scarlett, dan seluruh guild mereka—itu adalah ending yang paling indah.
+
+                                   ENDING ACHIEVED: HAPPY FAMILY
+
+
+                               “TO BE CONTINUED...ENDING: ACHIEVED”
+`
+    }
+  ];
+
+  let current = 0;
+
+  function render() {
+    document.getElementById("chapterTitle").innerText = chapters[current].title;
+    document.getElementById("chapterContent").innerText = chapters[current].content;
+  }
+
+  function nextChapter() {
+    if (current < chapters.length - 1) {
+      current++;
+      render();
+    }
+  }
+
+  function prevChapter() {
+    if (current > 0) {
+      current--;
+      render();
+    }
+  }
+
+  function goChapter(index) {
+    current = index;
+    render();
+  }
+
+  function toggleDark() {
+    document.body.classList.toggle("dark");
+  }
+
+  render();
+</script>
+
+</body>
+</html>
